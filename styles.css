@@ -1,15 +1,15 @@
 /* Variables */
 :root {
-    --primary-color: #FF7043;
-    --secondary-color: #FF8A65;
-    --accent-color: #FFAB91;
+    --primary-color: #FF746C;
+    --secondary-color: #FF8D84;
+    --accent-color: #FFB4B0;
     --text-color: #4A4A4A;
     --light-text: #757575;
     --background: #ffffff;
-    --section-bg: #fff5f2;
+    --section-bg: #FFF6F5;
     --card-bg: #ffffff;
-    --gradient-start: #FF7043;
-    --gradient-end: #FF8A65;
+    --gradient-start: #FF746C;
+    --gradient-end: #FF8D84;
     --nav-bg: rgba(255, 255, 255, 0.95);
     --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     --pattern-color: rgba(0, 0, 0, 0.03);
@@ -19,18 +19,18 @@
 
 /* Dark Mode Variables */
 [data-theme="dark"] {
-    --primary-color: #FF7043;
-    --secondary-color: #FF8A65;
+    --primary-color: #FF8D84;
+    --secondary-color: #FF746C;
     --text-color: #f3f4f6;
     --light-text: #d1d5db;
-    --background: #1a1f2e;
-    --section-bg: #151b2d;
-    --card-bg: #1e2435;
-    --nav-bg: rgba(26, 31, 46, 0.95);
-    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --background: #1c1a1b;
+    --section-bg: #211e1f;
+    --card-bg: #252223;
+    --nav-bg: rgba(28, 26, 27, 0.95);
+    --card-shadow: 0 10px 30px rgba(255, 116, 108, 0.15);
     --pattern-color: rgba(255, 255, 255, 0.03);
-    --blur-color: rgba(255, 138, 101, 0.015);
-    --footer-text: #ffffff;
+    --blur-color: rgba(255, 116, 108, 0.02);
+    --footer-text: #f9f9f9;
 }
 
 /* Reset and Base Styles */
