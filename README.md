@@ -29,13 +29,18 @@ En la web encontrarás información sobre:
 ### 📂 Estructura del repositorio
 ```
 portfolio-alex/
-├── assets/
-│   └── images/
-│       └── web_banner.png
-├── index.html
-├── styles.css
-├── script.js
-└── README.md
+│   .gitignore
+│   certifications.css
+│   certifications.html
+│   index.html
+│   README.md
+│   script.js
+│   styles.css
+│
+└───assets
+    └───images
+        │   profile.jpg
+        │   web_banner.png
 ```
 
 ---
