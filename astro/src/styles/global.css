@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+    /* Fondo principal tipo azul oscuro */
+    --color-bg: #050816;              /* body */
+    --color-bg-elevated: #0b1220;     /* tarjetas, navbar */
+    --color-border-subtle: #1f2933;
+
+    /* Texto */
+    --color-text: #e5e7eb;            /* gris muy claro */
+    --color-text-muted: #9ca3af;
+
+    /* Rojo de marca (acentos) */
+    --color-primary: #e53935;
+    --color-primary-light: #ef5350;
+    --color-primary-dark: #b71c1c;
+
+    /* Opcional: tipografía base */
+    /* --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif; */
+}
