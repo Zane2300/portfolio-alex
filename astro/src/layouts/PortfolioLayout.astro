@@ -3,7 +3,7 @@ import "../styles/global.css";
 
 const {
     title = "Alex Rosell – Portfolio",
-    description = "Cybersecurity, DevOps & Audiovisual portfolio.",
+    description = "Cybersecurity, DevOps & Audiovisual portfolio built in Astro.",
 } = Astro.props;
 ---
 
@@ -16,25 +16,23 @@ const {
         <title>{title}</title>
         <meta name="description" content={description} />
 
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" />
     </head>
 
     <body class="min-h-screen bg-bg text-text antialiased">
         <!-- NAVBAR -->
-        <header class="sticky top-0 z-50 border-b border-border-subtle bg-bg-elevated/95 backdrop-blur">
-            <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-                <slot name="navbar" />
-            </div>
+        <header class="pointer-events-none">
+            <slot name="navbar" />
         </header>
 
-        <!-- CONTENT -->
+        <!-- MAIN CONTENT -->
         <main class="mx-auto max-w-6xl px-4 py-16 space-y-32">
             <slot />
         </main>
 
         <!-- FOOTER -->
-        <footer class="mt-32 border-t border-border-subtle">
-            <div class="mx-auto max-w-6xl px-4 py-10 text-sm text-text-muted">
+        <footer class="mt-32 border-t border-bg-selection text-text-muted">
+            <div class="mx-auto max-w-6xl px-4 py-10 text-sm">
                 <slot name="footer" />
             </div>
         </footer>

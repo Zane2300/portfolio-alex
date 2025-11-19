@@ -1,0 +1,6 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta name="generator" content={Astro.generator} />
+	</head>
+</html>

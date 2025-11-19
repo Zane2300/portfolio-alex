@@ -1,20 +1,30 @@
 @import "tailwindcss";
 
+/* One Dark color system */
 @theme {
-    /* Fondo principal tipo azul oscuro */
-    --color-bg: #050816;              /* body */
-    --color-bg-elevated: #0b1220;     /* tarjetas, navbar */
-    --color-border-subtle: #1f2933;
+    /* Backgrounds */
+    --color-bg: #282c34;              /* main background */
+    --color-bg-elevated: #2c313c;     /* navbar, cards */
+    --color-bg-dark: #21252b;         /* darkest areas */
+    --color-bg-selection: #3e4451;
 
-    /* Texto */
-    --color-text: #e5e7eb;            /* gris muy claro */
-    --color-text-muted: #9ca3af;
+    /* Text */
+    --color-text: #abb2bf;
+    --color-text-muted: #5c6370;
 
-    /* Rojo de marca (acentos) */
-    --color-primary: #e53935;
-    --color-primary-light: #ef5350;
-    --color-primary-dark: #b71c1c;
+    /* One Dark Accent Palette */
+    --color-red: #e06c75;
+    --color-orange: #d19a66;
+    --color-yellow: #e5c07b;
+    --color-green: #98c379;
+    --color-cyan: #56b6c2;
+    --color-blue: #61afef;
+    --color-purple: #c678dd;
 
-    /* Opcional: tipografía base */
-    /* --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif; */
+    /* Your brand red mapped to One Dark red */
+    --color-primary: var(--color-red);
+    --color-primary-light: #ff7f88;
+    --color-primary-dark: #b64f57;
+    
+    --font-sans: "Onest", system-ui, sans-serif;
 }
