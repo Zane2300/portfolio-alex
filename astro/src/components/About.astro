@@ -1,0 +1,53 @@
+---
+import Image from "astro/components/Image.astro";
+import profileImg from "../assets/profile_2.png";
+---
+
+<section id="about" class="section scroll-mt-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl">
+    <h2 class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-text-muted">
+        <svg 
+            class="w-7 h-7 text-primary"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+        >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M12 2a5 5 0 1 1 -5 5l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+            <path d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z" />
+        </svg>
+        About Me
+    </h2>
+
+    <article class="flex flex-col items-center justify-center gap-8 text-gray-700 dark:text-gray-300 md:flex-row">
+
+        <!-- TEXT COLUMN -->
+        <div class="md:mb-4 md:pr-6 text-text-muted font-normal md:order-1 leading-relaxed space-y-4">
+            <p>
+                I’m a <strong class="text-primary">cybersecurity & systems specialist</strong> focused on securing infrastructures and reducing operational risk. I work with firewalls, networks and Active Directory to keep critical systems stable, resilient and protected.
+            </p>
+
+            <p>
+                I’ve supported corporate and public-sector environments, handling firewall administration, switch management, datacenter expansion and incident response — helping teams strengthen their security posture and operate more efficiently.
+            </p>
+
+            <p>
+                I’m driven by technical challenges: identifying weaknesses, hardening services and applying practical solutions that improve reliability and reduce attack surface.
+            </p>
+
+            <p>
+                Right now I’m deepening my expertise in 
+                <strong class="text-primary">digital forensics</strong>, 
+                <strong class="text-primary">Red Team operations</strong> and 
+                <strong class="text-primary">DevOps security</strong>, combining a hands-on mindset with continuous learning and a strong focus on problem-solving.
+            </p>
+        </div>
+
+        <Image 
+            src={profileImg} 
+            alt="Alex Rosell Portrait"
+            class="object-cover w-64 h-64 md:w-72 md:h-72 rounded-3xl md:order-2 bg-primary/10 ring-1 ring-bg-selection dark:ring-white/20"
+            style="object-position: 50% 50%"
+        />
+    </article>
+</section>
