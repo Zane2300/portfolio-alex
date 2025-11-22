@@ -4,7 +4,7 @@ import profileImg from "../assets/profile_2.png";
 ---
 
 <section id="about" class="section scroll-mt-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl">
-    <h2 class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-text-muted">
+    <h2 class="flex items-center mb-6 text-3xl font-semibold gap-x-3">
         <svg 
             class="w-7 h-7 text-primary"
             fill="none"
@@ -43,11 +43,22 @@ import profileImg from "../assets/profile_2.png";
             </p>
         </div>
 
-        <Image 
-            src={profileImg} 
-            alt="Alex Rosell Portrait"
-            class="object-cover w-64 h-64 md:w-72 md:h-72 rounded-3xl md:order-2 bg-primary/10 ring-1 ring-bg-selection dark:ring-white/20"
-            style="object-position: 50% 50%"
-        />
+        <!-- FOTO CON MARCO MACOS -->
+        <div class="md:order-2 shrink-0">
+            <div class="relative w-64 h-64 md:w-72 md:h-72 rounded-3xl shadow-xl overflow-hidden  border border-white/10 bg-bg-card/30">
+                <Image
+                    src={profileImg}
+                    alt="Alex Rosell Portrait"
+                    class="w-full h-full object-cover"
+                />
+
+                <!-- Barra macOS superpuesta -->
+                <div class="absolute inset-x-0 top-0 flex items-center gap-2 px-3 py-2 bg-black/30 dark:bg-black/40 backdrop-blur-md">
+                    <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                    <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+                    <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                </div>
+            </div>
+        </div>
     </article>
 </section>
