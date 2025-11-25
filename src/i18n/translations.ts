@@ -15,8 +15,8 @@ type NavTexts = {
 
 type HeroTexts = {
     badge: string;
-    titleLine1: string;
-    titleLine2: string;
+    greeting: string;
+    titleLine: string;
     subtitle: string;
     github: string;
     linkedin: string;
@@ -42,9 +42,9 @@ export const translations: Record<Lang, Translations> = {
         },
         hero: {
             badge: "CYBERSECURITY · DEVOPS · RED TEAM",
-            titleLine1: "Hi, I'm Alex Rosell",
-            titleLine2: "I build secure & reliable systems.",
-            subtitle: "+2 years of experience. Cybersecurity & Systems Specialist based in Burriana, Spain. Experienced in networks, systems administration and ethical hacking.",
+            greeting: "Hi, I'm",
+            titleLine: "I build secure & reliable systems.",
+            subtitle: "+2 years of experience. <highlight>Cybersecurity & Systems Specialist</highlight> based in Burriana, Spain. Experienced in networks, systems administration and ethical hacking.",
             github: "GitHub",
             linkedin: "LinkedIn",
             email: "Email",
@@ -63,9 +63,9 @@ export const translations: Record<Lang, Translations> = {
         },
         hero: {
             badge: "CIBERSEGURIDAD · DEVOPS · RED TEAM",
-            titleLine1: "Hola, soy Alex Rosell",
-            titleLine2: "Diseño sistemas seguros y fiables.",
-            subtitle: "+2 años de experiencia. Especialista en Ciberseguridad y Sistemas con base en Burriana, España. Experiencia en redes, administración de sistemas y hacking ético.",
+            greeting: "Hola, soy",
+            titleLine: "Diseño sistemas seguros y fiables.",
+            subtitle: "+2 años de experiencia. <highlight>Especialista en Ciberseguridad y Sistemas</highlight> con base en Burriana, España. Experiencia en redes, administración de sistemas y hacking ético.",
             github: "GitHub",
             linkedin: "LinkedIn",
             email: "Correo",

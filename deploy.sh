@@ -1,6 +1,8 @@
 #!/bin/bash
 
 set -e  # parar si hay error
+echo "📦 Installing Node Modules..."
+npm install
 
 echo "📦 Building Astro project..."
 npm run build
