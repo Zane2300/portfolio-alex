@@ -12,30 +12,28 @@ const links = [
 ];
 ---
 
-<nav class="fixed top-6 left-0 right-0 z-50 flex justify-center">
-    <nav class="mx-auto max-w-6xl px-4 py-4 flex justify-center">
-        <div class="backdrop-blur-lg bg-bg-elevated/60 border border-bg-selection px-8 py-3 shadow-lg shadow-black/10 flex items-center gap-10 rounded-full">
-            <!-- NAME / LOGO -->
-            <a href="#home" class="text-sm font-semibold text-text hover:text-primary transition-colors">
-                Alex
-            </a>
+<nav class="mx-auto max-w-6xl px-4 py-4 flex justify-center">
+    <div class="backdrop-blur-lg bg-bg-elevated/60 border border-bg-selection px-8 py-3 shadow-lg shadow-black/10 flex items-center gap-10 rounded-full">
+        <!-- NAME / LOGO -->
+        <a href="#home" class="text-sm font-semibold text-text hover:text-primary transition-colors">
+            Alex
+        </a>
 
-            <!-- Links -->
-            <ul class="flex items-center gap-8 text-sm font-medium text-text-muted">
-                {links.map((link) => (
-                    <li>
-                        <a href={link.href} class="hover:text-primary transition-colors">
-                            {link.label}
-                        </a>
-                    </li>
-                ))}
-            </ul>
+        <!-- Links -->
+        <ul class="flex items-center gap-8 text-sm font-medium text-text-muted">
+            {links.map((link) => (
+                <li>
+                    <a href={link.href} class="hover:text-primary transition-colors">
+                        {link.label}
+                    </a>
+                </li>
+            ))}
+        </ul>
 
-            <!-- RIGHT: Theme toggle -->
-            <div class="ml-4">
-                <ThemeToggle client:load />
-            </div>
+        <!-- RIGHT: Theme toggle -->
+        <div class="ml-4">
+            <ThemeToggle client:load />
         </div>
-    </nav>
+    </div>
 </nav>
 

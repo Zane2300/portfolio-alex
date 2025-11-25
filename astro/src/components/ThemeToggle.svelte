@@ -40,8 +40,9 @@
     on:click={toggleTheme}
 >
     <span 
-        class="inline-block h-2 w-2 rounded-full 
-        {theme === 'dark' ? 'bg-primary' : 'bg-yellow-300'}"
+        class="inline-block h-2 w-2 rounded-full"
+        class:bg-primary={theme === "dark"}
+        class:bg-yellow-300={theme === "light"}
     >
     </span>
     <span>{theme === "dark" ? "Dark" : "Light"}</span>

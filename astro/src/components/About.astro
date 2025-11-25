@@ -3,7 +3,7 @@ import Image from "astro/components/Image.astro";
 import profileImg from "../assets/profile_2.png";
 ---
 
-<section id="about" class="section scroll-mt-20 w-full mx-auto container lg:max-w-4xl md:max-w-2xl">
+<section id="about" class="scroll-mt-32">
     <h2 class="flex items-center mb-6 text-3xl font-semibold gap-x-3">
         <svg 
             class="w-7 h-7 text-primary"
@@ -19,10 +19,10 @@ import profileImg from "../assets/profile_2.png";
         About Me
     </h2>
 
-    <article class="flex flex-col items-center justify-center gap-8 text-gray-700 dark:text-gray-300 md:flex-row">
+    <article class="flex flex-col items-center justify-center gap-8 text-text md:flex-row">
 
         <!-- TEXT COLUMN -->
-        <div class="md:mb-4 md:pr-6 text-text-muted font-normal md:order-1 leading-relaxed space-y-4">
+        <div class="md:mb-4 md:pr-6 text-text font-normal md:order-1 leading-relaxed space-y-4">
             <p>
                 I’m a <strong class="text-primary">cybersecurity & systems specialist</strong> focused on securing infrastructures and reducing operational risk. I work with firewalls, networks and Active Directory to keep critical systems stable, resilient and protected.
             </p>
@@ -45,7 +45,7 @@ import profileImg from "../assets/profile_2.png";
 
         <!-- FOTO CON MARCO MACOS -->
         <div class="md:order-2 shrink-0">
-            <div class="relative w-64 h-64 md:w-72 md:h-72 rounded-3xl shadow-xl overflow-hidden  border border-white/10 bg-bg-card/30">
+            <div class="relative w-64 h-64 md:w-72 md:h-72 rounded-3xl shadow-xl overflow-hidden  border border-white/10 bg-bg-elevated">
                 <Image
                     src={profileImg}
                     alt="Alex Rosell Portrait"
