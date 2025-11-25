@@ -1,0 +1,30 @@
+---
+import PortfolioLayout from "../../layouts/PortfolioLayout.astro";
+
+import NavBar from "../../components/NavBar.astro";
+import Hero from "../../components/Hero.astro";
+import Experience from "../../components/Experience.astro";
+import Projects from "../../components/Projects.astro";
+import About from "../../components/About.astro";
+import Skills from "../../components/Skills.astro";
+import Education from "../../components/Education.astro";
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+
+import { translations } from "../../i18n/translations";
+
+const lang = "es";
+const t = translations[lang];
+---
+
+<PortfolioLayout lang={lang}>
+    <NavBar slot="navbar" lang={lang} t={t.nav} />
+    <Hero lang={lang} t={t.hero} />
+    <Experience />
+    <Projects />
+    <About />
+    <Skills />
+    <Education />
+    <Contact />
+    <Footer slot="footer" />
+</PortfolioLayout>

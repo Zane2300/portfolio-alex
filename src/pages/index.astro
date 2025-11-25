@@ -10,11 +10,16 @@ import Skills from "../components/Skills.astro";
 import Education from "../components/Education.astro";
 import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
+
+import { translations } from "../i18n/translations";
+
+const lang = "en";
+const t = translations[lang];
 ---
 
-<PortfolioLayout>
-    <NavBar slot="navbar" />
-    <Hero />
+<PortfolioLayout lang={lang}>
+    <NavBar slot="navbar" lang={lang} t={t.nav} />
+    <Hero lang={lang} t={t.hero} />
     <Experience />
     <Projects />
     <About />
