@@ -15,5 +15,5 @@ export default defineConfig({
 
   site: 'https://zane2300.github.io/portfolio-alex',
   base: '/portfolio-alex',
-  outDir: './docs', 
+  outDir: 'docs', 
 });
