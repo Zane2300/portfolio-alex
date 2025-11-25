@@ -1,0 +1,64 @@
+---
+const contact = {
+  email: "alexrosell2003@gmail.com",
+  phone: "+34 694 41 48 36",
+  location: "Burriana, Spain",
+  github: "https://github.com/Zane2300",
+  linkedin: "https://www.linkedin.com/in/alex-rosell-angullo/",
+};
+---
+
+<section id="contact" class="scroll-mt-32 py-16">
+    <div class="mx-auto max-w-6xl px-4 space-y-8">
+
+        <!-- HEADER -->
+        <header class="space-y-2">
+            <h2 class="flex items-center gap-3 text-3xl md:text-4xl font-semibold">
+                <svg
+                    class="w-7 h-7 text-primary"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M4 4h16v16H4z" />
+                    <path d="M4 7l8 6l8 -6" />
+                </svg>
+                Contact
+            </h2>
+        </header>
+
+        <!-- CONTACT LIST -->
+        <div class="space-y-4 text-sm md:text-base">
+            
+            <!-- EMAIL -->
+            <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16v16H4z" />
+                    <path d="M4 7l8 6l8 -6" />
+                </svg>
+                <a href={`mailto:${contact.email}`} class="hover:text-primary transition-colors">
+                    {contact.email}
+                </a>
+            </div>
+
+            <!-- PHONE -->
+            <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M5 4h4l2 5l-2 1a11 11 0 0 0 5 5l1 -2l5 2v4c-8 2 -15 -5 -15 -15" />
+                </svg>
+                <span>{contact.phone}</span>
+            </div>
+
+            <!-- LOCATION -->
+            <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M12 11l0 .01" />
+                <path d="M12 21l-8 -10a8 8 0 1 1 16 0l-8 10" />
+                </svg>
+                <span>{contact.location}</span>
+            </div>
+        </div>
+    </div>
+</section>

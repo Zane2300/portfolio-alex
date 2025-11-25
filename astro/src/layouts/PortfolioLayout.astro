@@ -8,7 +8,7 @@ const {
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,7 +22,7 @@ const {
 
     <body class="min-h-screen bg-bg text-text antialiased">
         <!-- NAVBAR -->
-        <header class="pointer-events-none">
+        <header class="sticky top-0 z-50 bg-bg/80 backdrop-blur border-b border-bg-selection">
             <slot name="navbar" />
         </header>
 
