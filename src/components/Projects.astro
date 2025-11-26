@@ -5,48 +5,16 @@ import apacheHardeningFrontPage from "../assets/git_projects_front_page/apache_h
 import dvwaFrontPage from "../assets/git_projects_front_page/dvwa.png"
 import dashboardFrontPage from "../assets/git_projects_front_page/dashboard.png"
 
-const projects = [
-    {
-        title: "DevOps Labs & Automation Suite",
-        subtitle:"CI/CD · Docker · Jenkins · Ansible · Prometheus · Grafana · K3s",
-        description: "Collection of DevOps labs: Jenkins pipelines, Dockerized applications and automated tests for a Python project. Focused on learning CI/CD, containers and good practices for software delivery.",
-        tech: ["Docker", "Jenkins", "Ansible", "Prometheus", "Grafana", "K3s"],
-        codeUrl: "https://github.com/Zane2300/DevOps_Projects",
-        liveUrl: null,
-        image: devOpsProjectsFrontPage,
-        imageAlt: "Front Page DevOps Labs & Automation Suite."
-    },
-    {
-        title: "Apache Hardening",
-        subtitle: "Web Server Security",
-        description: "Hardening of an Apache web server on Linux: secure virtual hosts, HTTPS, security headers, logging and best practices to reduce attack surface for public-facing web services.",
-        tech: ["Apache", "Linux", "Security", "Bash"],
-        codeUrl: "https://github.com/Zane2300/Apache_Hardening",
-        liveUrl: null,
-        image: apacheHardeningFrontPage,
-        imageAlt: "Front Page Apache Hardening."
-    },
-    {
-        title: "DVWA Labs & Writeups",
-        subtitle: "Offensive Security · Web Hacking",
-        description: "Practice environment based on Damn Vulnerable Web Application (DVWA) with notes, scripts and exploitation paths for common web vulnerabilities: SQLi, XSS, CSRF, auth bypass and more.",
-        tech: ["DVWA", "Web Security", "Kali Linux"],
-        codeUrl: "https://github.com/Zane2300/DVWA",
-        liveUrl: null,
-        image: dvwaFrontPage,
-        imageAlt: "Front Page DVWA."
-    },
-    {
-        title: "Web Browser Dashboard",
-        subtitle: "Productivity · Custom Start Page",
-        description: "A custom browser dashboard with quick links, widgets and a clean aesthetic, designed to serve as a personal start page and experimentation ground for HTML, CSS and JavaScript.",
-        tech: ["HTML", "CSS", "JavaScript"],
-        codeUrl: "https://github.com/Zane2300/web-browser-dashboard",
-        liveUrl: "https://zane2300.github.io/web-browser-dashboard/",
-        image: dashboardFrontPage,
-        imageAlt: "Front Page Web Browser Dashboard."
-    }
-]
+import type { ProjectItem } from "../i18n/translations";
+
+const { t } = Astro.props;
+
+const imageMap: Record<ProjectItem["id"], any> = {
+    devops: devOpsProjectsFrontPage,
+    apache: apacheHardeningFrontPage,
+    dvwa: dvwaFrontPage,
+    dashboard: dashboardFrontPage,
+};
 ---
 <section id="projects" class="scroll-mt-32">
     <header class="mb-10">
@@ -62,18 +30,18 @@ const projects = [
             <path d="M8 4l-5 8l5 8" />
             <path d="M16 4l5 8l-5 8" />
         </svg>
-        Projects
+        {t.title}
         </h2>
     </header>
 
     <div class="flex flex-col gap-y-8">
-        {projects.map((project) => (
+        {t.items.map((project: ProjectItem) => (
             <article class="group flex flex-col gap-y-6 md:flex-row md:items-stretch md:gap-x-8 rounded-3xl border border-bg-selection bg-bg-elevated/70 shadow-[0_24px_80px_rgba(0,0,0,0.55)] overflow-hidden">
                 
                 {/* IMAGEN */}
                 <div class="w-full md:w-1/2">
                     <div class="relative h-full min-h-[180px] flex items-center justify-center overflow-hidden bg-bg-dark">
-                        <Image src={project.image} alt={project.imageAlt} class="object-cover w-full h-full transition-transform duration-500 md:group-hover:scale-105" loading="lazy"/>
+                        <Image src={imageMap[project.id]} alt={project.imageAlt} class="object-cover w-full h-full transition-transform duration-500 md:group-hover:scale-105" loading="lazy"/>
                     </div>
                 </div>
 
@@ -92,10 +60,10 @@ const projects = [
 
                     {/* TECH CHIPS */}
                     <ul class="flex flex-wrap gap-2 pt-1">
-                        {project.tech.map((t) => (
+                        {project.tech.map((tech) => (
                             <li>
                                 <span class="inline-flex items-center gap-2 rounded-full border border-bg-selection bg-bg-dark/60 px-3 py-1 text-xs font-medium text-text-muted">
-                                    {t}
+                                    {tech}
                                 </span>
                             </li>
                         ))}
@@ -104,8 +72,10 @@ const projects = [
                     <p class="text-sm md:text-base text-text-muted">
                         {project.description}
                     </p>
+
                     {/* BUTTONS */}
                     <footer class="flex flex-wrap items-center justify-start gap-3 pt-5">
+                        
                         {/* Code (GitHub) */}
                         <a
                             href={project.codeUrl}
@@ -120,7 +90,7 @@ const projects = [
                             >
                                 <path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.95c.58.1.79-.25.79-.56v-1.96c-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.28-1.67-1.28-1.67-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.72-1.55-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.28 1.2-3.08-.12-.29-.52-1.46.12-3.04 0 0 .98-.31 3.2 1.18a11.1 11.1 0 0 1 2.92-.39c.99 0 1.99.13 2.92.39 2.22-1.49 3.2-1.18 3.2-1.18.64 1.58.24 2.75.12 3.04.75.8 1.2 1.82 1.2 3.08 0 4.43-2.69 5.4-5.25 5.68.41.36.77 1.1.77 2.22v3.29c0 .31.2.67.79.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
                             </svg>
-                            <span>Code</span>
+                            <span>{t.codeLabel}</span>
                         </a>
                     
                         {/* Preview (opcional) */}
@@ -137,20 +107,10 @@ const projects = [
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"
                                 >
-                                    <path
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        d="M14 3h7m0 0v7m0-7L10 14"
-                                    />
-                                    <path
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        d="M5 5v14h14"
-                                    />
+                                    <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 3h7m0 0v7m0-7L10 14" />
+                                    <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 5v14h14" />
                                 </svg>
-                                <span>Preview</span>
+                                <span>{t.previewLabel}</span>
                             </a>
                         )}
                     </footer>

@@ -30,8 +30,15 @@ export type ExperienceItem = {
     description: string;
 };
 
-type ProjectsTexts = {
-
+export type ProjectItem = {
+    id: "devops" | "apache" | "dvwa" | "dashboard";
+    title: string;
+    subtitle: string;
+    description: string;
+    tech: string[];
+    codeUrl: string;
+    liveUrl: string | null;
+    imageAlt: string;
 };
 
 type AboutTexts = {
@@ -61,7 +68,12 @@ type Translations = {
         title: string;
         items: ExperienceItem[];
     };
-    projects: ProjectsTexts;
+    projects: {
+        title: string;
+        codeLabel: string;
+        previewLabel: string;
+        items: ProjectItem[];
+    };
     about: AboutTexts;
     skills: SkillsTexts;
     education: EducationTexts;
@@ -113,7 +125,51 @@ export const translations: Record<Lang, Translations> = {
             ],
         },
         projects: {
-
+            title: "Projects",
+            codeLabel: "Code",
+            previewLabel: "Preview",
+            items: [
+                {
+                    id: "devops",
+                    title: "DevOps Labs & Automation Suite",
+                    subtitle: "CI/CD · Docker · Jenkins · Ansible · Prometheus · Grafana · K3s",
+                    description: "Collection of DevOps labs: Jenkins pipelines, Dockerized applications and automated tests for a Python project. Focused on learning CI/CD, containers and good practices for software delivery.",
+                    tech: ["Docker", "Jenkins", "Ansible", "Prometheus", "Grafana", "K3s"],
+                    codeUrl: "https://github.com/Zane2300/DevOps_Projects",
+                    liveUrl: null,
+                    imageAlt: "Front page of DevOps Labs & Automation Suite project.",
+                },
+                {
+                    id: "apache",
+                    title: "Apache Hardening",
+                    subtitle: "Web Server Security",
+                    description: "Hardening of an Apache web server on Linux: secure virtual hosts, HTTPS, security headers, logging and best practices to reduce attack surface for public-facing web services.",
+                    tech: ["Apache", "Linux", "Security", "Bash"],
+                    codeUrl: "https://github.com/Zane2300/Apache_Hardening",
+                    liveUrl: null,
+                    imageAlt: "Front page of the Apache Hardening project.",
+                },
+                {
+                    id: "dvwa",
+                    title: "DVWA Labs & Writeups",
+                    subtitle: "Offensive Security · Web Hacking",
+                    description: "Practice environment based on Damn Vulnerable Web Application (DVWA) with notes, scripts and exploitation paths for common web vulnerabilities: SQLi, XSS, CSRF, auth bypass and more.",
+                    tech: ["DVWA", "Web Security", "Kali Linux"],
+                    codeUrl: "https://github.com/Zane2300/DVWA",
+                    liveUrl: null,
+                    imageAlt: "Front page of the DVWA labs and writeups project.",
+                },
+                {
+                    id: "dashboard",
+                    title: "Web Browser Dashboard",
+                    subtitle: "Productivity · Custom Start Page",
+                    description: "A custom browser dashboard with quick links, widgets and a clean aesthetic, designed to serve as a personal start page and experimentation ground for HTML, CSS and JavaScript.",
+                    tech: ["HTML", "CSS", "JavaScript"],
+                    codeUrl: "https://github.com/Zane2300/web-browser-dashboard",
+                    liveUrl: "https://zane2300.github.io/web-browser-dashboard/",
+                    imageAlt: "Front page of the Web Browser Dashboard project.",
+                },
+            ],
         },
         about: {
 
@@ -175,7 +231,51 @@ export const translations: Record<Lang, Translations> = {
                 ],
         },
         projects: {
-
+            title: "Proyectos",
+            codeLabel: "Código",
+            previewLabel: "Demo",
+            items: [
+                {
+                    id: "devops",
+                    title: "DevOps Labs & Automation Suite",
+                    subtitle: "CI/CD · Docker · Jenkins · Ansible · Prometheus · Grafana · K3s",
+                    description: "Colección de laboratorios DevOps: pipelines en Jenkins, aplicaciones dockerizadas y pruebas automatizadas para un proyecto en Python. Centrado en aprender CI/CD, contenedores y buenas prácticas de despliegue.",
+                    tech: ["Docker", "Jenkins", "Ansible", "Prometheus", "Grafana", "K3s"],
+                    codeUrl: "https://github.com/Zane2300/DevOps_Projects",
+                    liveUrl: null,
+                    imageAlt: "Portada del proyecto DevOps Labs & Automation Suite.",
+                },
+                {
+                    id: "apache",
+                    title: "Apache Hardening",
+                    subtitle: "Seguridad en servidores web",
+                    description: "Bastionado de un servidor web Apache en Linux: virtual hosts seguros, HTTPS, cabeceras de seguridad, logging y buenas prácticas para reducir la superficie de ataque en servicios expuestos a Internet.",
+                    tech: ["Apache", "Linux", "Seguridad", "Bash"],
+                    codeUrl: "https://github.com/Zane2300/Apache_Hardening",
+                    liveUrl: null,
+                    imageAlt: "Portada del proyecto Apache Hardening.",
+                },
+                {
+                    id: "dvwa",
+                    title: "DVWA Labs & Writeups",
+                    subtitle: "Seguridad ofensiva · Web Hacking",
+                    description: "Entorno de práctica basado en Damn Vulnerable Web Application (DVWA) con notas, scripts y rutas de explotación para vulnerabilidades web comunes: SQLi, XSS, CSRF, bypass de autenticación y más.",
+                    tech: ["DVWA", "Seguridad Web", "Kali Linux"],
+                    codeUrl: "https://github.com/Zane2300/DVWA",
+                    liveUrl: null,
+                    imageAlt: "Portada del proyecto de laboratorios y writeups de DVWA.",
+                },
+                {
+                    id: "dashboard",
+                    title: "Web Browser Dashboard",
+                    subtitle: "Productividad · Página de inicio personalizada",
+                    description: "Un panel personalizado para el navegador con accesos rápidos, widgets y una estética limpia, diseñado como página de inicio personal y terreno de pruebas para HTML, CSS y JavaScript.",
+                    tech: ["HTML", "CSS", "JavaScript"],
+                    codeUrl: "https://github.com/Zane2300/web-browser-dashboard",
+                    liveUrl: "https://zane2300.github.io/web-browser-dashboard/",
+                    imageAlt: "Portada del proyecto Web Browser Dashboard.",
+                },
+            ],
         },
         about: {
 
