@@ -23,10 +23,44 @@ type HeroTexts = {
     email: string;
 };
 
+type ExperienceTexts = {
+
+};
+
+type ProjectsTexts = {
+
+};
+
+type AboutTexts = {
+
+};
+
+type SkillsTexts = {
+
+};
+
+type EducationTexts = {
+
+};
+
+type ContactTexts = {
+
+};
+
+type FooterTexts = {
+
+};
+
 type Translations = {
     nav: NavTexts;
     hero: HeroTexts;
-    // add experience, projecs, etc.
+    experience: ExperienceTexts;
+    projects: ProjectsTexts;
+    about: AboutTexts;
+    skills: SkillsTexts;
+    education: EducationTexts;
+    contact: ContactTexts;
+    footer: FooterTexts;
 };
 
 export const translations: Record<Lang, Translations> = {
@@ -49,6 +83,27 @@ export const translations: Record<Lang, Translations> = {
             linkedin: "LinkedIn",
             email: "Email",
         },
+        experience: {
+
+        },
+        projects: {
+
+        },
+        about: {
+
+        },
+        skills: {
+
+        },
+        education: {
+
+        },
+        contact: {
+
+        },
+        footer: {
+
+        },
     },
 
     es: {
@@ -69,6 +124,27 @@ export const translations: Record<Lang, Translations> = {
             github: "GitHub",
             linkedin: "LinkedIn",
             email: "Correo",
+        },
+        experience: {
+
+        },
+        projects: {
+
+        },
+        about: {
+
+        },
+        skills: {
+
+        },
+        education: {
+
+        },
+        contact: {
+
+        },
+        footer: {
+
         },
     },
 };

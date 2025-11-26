@@ -19,12 +19,12 @@ const t = translations[lang];
 
 <PortfolioLayout lang={lang}>
     <NavBar slot="navbar" lang={lang} t={t.nav} />
-    <Hero lang={lang} t={t.hero} />
-    <Experience />
-    <Projects />
-    <About />
-    <Skills />
-    <Education />
-    <Contact />
-    <Footer slot="footer" />
+    <Hero t={t.hero} />
+    <Experience t={t.experience}/>
+    <Projects t={t.projects}/>
+    <About t={t.about}/>
+    <Skills t={t.skills}/>
+    <Education t={t.education}/>
+    <Contact t={t.contact}/>
+    <Footer slot="footer" t={t.footer}/>
 </PortfolioLayout>
