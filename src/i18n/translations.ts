@@ -23,8 +23,11 @@ type HeroTexts = {
     email: string;
 };
 
-type ExperienceTexts = {
-
+export type ExperienceItem = {
+    role: string;
+    company: string;
+    period: string;
+    description: string;
 };
 
 type ProjectsTexts = {
@@ -54,7 +57,10 @@ type FooterTexts = {
 type Translations = {
     nav: NavTexts;
     hero: HeroTexts;
-    experience: ExperienceTexts;
+    experience: {
+        title: string;
+        items: ExperienceItem[];
+    };
     projects: ProjectsTexts;
     about: AboutTexts;
     skills: SkillsTexts;
@@ -84,7 +90,27 @@ export const translations: Record<Lang, Translations> = {
             email: "Email",
         },
         experience: {
-
+            title: "Work Experience",
+            items: [
+                {
+                    role: "Systems & Network Administrator",
+                    company: "Ayuntamiento de Burriana",
+                    period: "Aug 2023 – Aug 2024",
+                    description: "Administration of Fortinet firewalls, managed switches and Active Directory. Datacenter expansion, support for public employees, incident management and coordination of two interns.",
+                },
+                {
+                    role: "Full-Stack Developer",
+                    company: "Develovements",
+                    period: "Mar 2023 – Jul 2023",
+                    description: "Full development of a complete web application (frontend in Next.js + backend in NestJS), and contribution of improvements and bug fixes to existing Python-based projects.",
+                },
+                {
+                    role: "IT Support Technician",
+                    company: "Grupo STN",
+                    period: "Mar 2021 – Jun 2021",
+                    description: "User support (CAU), configuration of Aruba switches and collaboration on internal software development tasks.",
+                },
+            ],
         },
         projects: {
 
@@ -126,7 +152,27 @@ export const translations: Record<Lang, Translations> = {
             email: "Correo",
         },
         experience: {
-
+            title: "Experiencia profesional",
+                items: [
+                    {
+                        role: "Administrador de sistemas y redes",
+                        company: "Ayuntamiento de Burriana",
+                        period: "ago 2023 – ago 2024",
+                        description: "Administración de cortafuegos Fortinet, switches gestionados y Active Directory. Ampliación del centro de datos, soporte a personal funcionario, gestión de incidencias y coordinación de dos personas en prácticas.",
+                    },
+                    {
+                        role: "Desarrollador Full-Stack",
+                        company: "Develovements",
+                        period: "mar 2023 – jul 2023",
+                        description: "Desarrollo completo de una aplicación web (frontend en Next.js + backend en NestJS) y aportación de mejoras y corrección de errores en proyectos existentes basados en Python.",
+                    },
+                    {
+                        role: "Técnico de soporte IT",
+                        company: "Grupo STN",
+                        period: "mar 2021 – jun 2021",
+                        description: "Soporte a usuarios (CAU), configuración de switches Aruba y colaboración en tareas de desarrollo de software interno.",
+                    },
+                ],
         },
         projects: {
 
