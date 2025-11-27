@@ -1,14 +1,44 @@
 <script lang="ts">
+    import { onMount } from "svelte";
+
     type Lang = "en" | "es";
 
     export let lang: Lang = "en";
     const base = "/portfolio-alex";
+    const SCROLL_KEY = "portfolio-scroll-y";
 
     function go(next: Lang) {
         if (next === lang) return;
+
+        const currentY = window.scrollY || window.pageYOffset || 0;
+
+        try {
+            sessionStorage.setItem(SCROLL_KEY, String(currentY));
+        } catch {
+            //
+        }
+
         const target = next === "en" ? `${base}/` : `${base}/es/`;
         window.location.href = target;
     }
+
+    onMount(() => {
+        try {
+            const saved = sessionStorage.getItem(SCROLL_KEY);
+            if (saved) {
+                const y = Number(saved);
+                if (!Number.isNaN(y)) {
+                    window.scrollTo({
+                        top: y,
+                        behavior: "auto"
+                    });
+                }
+                sessionStorage.removeItem(SCROLL_KEY);
+            }
+        } catch {
+            //
+        }
+    });
 </script>
 
 <button
