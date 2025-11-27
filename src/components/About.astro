@@ -1,6 +1,21 @@
 ---
 import Image from "astro/components/Image.astro";
 import profileImg from "../assets/profile_2.png";
+
+import type { AboutTranslations } from "../i18n/translations";
+
+interface Props {
+    t: AboutTranslations;
+}
+
+const { t } = Astro.props;
+
+const paragraphsHTML = t.paragraphs.map((p) =>
+    p.replace(
+        /<highlight>(.*?)<\/highlight>/g,
+        `<strong class="text-primary">$1</strong>`
+    )
+);
 ---
 
 <section id="about" class="scroll-mt-32">
@@ -16,31 +31,16 @@ import profileImg from "../assets/profile_2.png";
             <path d="M12 2a5 5 0 1 1 -5 5l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
             <path d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z" />
         </svg>
-        About Me
+        {t.title}
     </h2>
 
     <article class="flex flex-col items-center justify-center gap-8 text-text md:flex-row">
 
         <!-- TEXT COLUMN -->
         <div class="md:mb-4 md:pr-6 text-text font-normal md:order-1 leading-relaxed space-y-4">
-            <p>
-                I’m a <strong class="text-primary">cybersecurity & systems specialist</strong> focused on securing infrastructures and reducing operational risk. I work with firewalls, networks and Active Directory to keep critical systems stable, resilient and protected.
-            </p>
-
-            <p>
-                I’ve supported corporate and public-sector environments, handling firewall administration, switch management, datacenter expansion and incident response — helping teams strengthen their security posture and operate more efficiently.
-            </p>
-
-            <p>
-                I’m driven by technical challenges: identifying weaknesses, hardening services and applying practical solutions that improve reliability and reduce attack surface.
-            </p>
-
-            <p>
-                Right now I’m deepening my expertise in 
-                <strong class="text-primary">digital forensics</strong>, 
-                <strong class="text-primary">Red Team operations</strong> and 
-                <strong class="text-primary">DevOps security</strong>, combining a hands-on mindset with continuous learning and a strong focus on problem-solving.
-            </p>
+            {paragraphsHTML.map((html) => (
+                <p set:html={html} />
+            ))}
         </div>
 
         <!-- FOTO CON MARCO MACOS -->

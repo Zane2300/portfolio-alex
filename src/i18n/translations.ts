@@ -41,8 +41,9 @@ export type ProjectItem = {
     imageAlt: string;
 };
 
-type AboutTexts = {
-
+export type AboutTranslations = {
+    title: string;
+    paragraphs: string[];
 };
 
 type SkillsTexts = {
@@ -74,7 +75,7 @@ type Translations = {
         previewLabel: string;
         items: ProjectItem[];
     };
-    about: AboutTexts;
+    about: AboutTranslations;
     skills: SkillsTexts;
     education: EducationTexts;
     contact: ContactTexts;
@@ -172,7 +173,13 @@ export const translations: Record<Lang, Translations> = {
             ],
         },
         about: {
-
+            title: "About Me",
+            paragraphs: [
+                `I’m a <highlight>cybersecurity & systems specialist</highlight> focused on securing infrastructures and reducing operational risk. I work with firewalls, networks and Active Directory to keep critical systems stable, resilient and protected.`,
+                `I’ve supported corporate and public-sector environments, handling firewall administration, switch management, datacenter expansion and incident response — helping teams strengthen their security posture and operate more efficiently.`,
+                `I’m driven by technical challenges: identifying weaknesses, hardening services and applying practical solutions that improve reliability and reduce attack surface.`,
+                `Right now I’m deepening my expertise in <highlight>digital forensics</highlight>, <highlight>Red Team operations</highlight> and <highlight>DevOps security</highlight>, combining a hands-on mindset with continuous learning and a strong focus on problem-solving.`,
+            ],
         },
         skills: {
 
@@ -278,7 +285,13 @@ export const translations: Record<Lang, Translations> = {
             ],
         },
         about: {
-
+            title: "Sobre mí",
+            paragraphs: [
+                `Soy <highlight>especialista en ciberseguridad y sistemas</highlight>, centrado en securizar infraestructuras y reducir el riesgo operativo. Trabajo con cortafuegos, redes y Active Directory para mantener sistemas críticos estables, resilientes y protegidos.`,
+                `He trabajado tanto en entornos corporativos como en la administración pública, gestionando firewalls, switches gestionados, ampliaciones de datacenter y respuesta a incidencias, ayudando a los equipos a reforzar su postura de seguridad y a operar de forma más eficiente.`,
+                `Me motivan los retos técnicos: identificar debilidades, bastionar servicios y aplicar soluciones prácticas que mejoren la fiabilidad y reduzcan la superficie de ataque.`,
+                `Actualmente estoy profundizando en <highlight>informática forense</highlight>, <highlight>operaciones de Red Team</highlight> y <highlight>seguridad en entornos DevOps</highlight>, combinando una mentalidad práctica con aprendizaje continuo y un fuerte foco en la resolución de problemas.`,
+            ],
         },
         skills: {
 
