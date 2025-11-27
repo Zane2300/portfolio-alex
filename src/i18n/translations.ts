@@ -94,11 +94,23 @@ export type EducationTranslations = {
 };
 
 type ContactTexts = {
-
+    title: string;
+    subtitle: string;
+    emailButton: string;
+    linkedinButton: string;
+    fields: {
+        email: string;
+        phone: string;
+        location: string;
+        github: string;
+    };
 };
 
 type FooterTexts = {
-
+    footer: string;
+    github: string;
+    linkedin: string;
+    email: string;
 };
 
 type Translations = {
@@ -301,10 +313,22 @@ export const translations: Record<Lang, Translations> = {
             ],
         },
         contact: {
-
+            title: "Contact",
+            subtitle: "Let’s work together!",
+            emailButton: "Email me",
+            linkedinButton: "LinkedIn",
+            fields: {
+                email: "Email",
+                phone: "Phone",
+                location: "Location",
+                github: "GitHub",
+            },
         },
         footer: {
-
+            footer: "Alex Rosell. All rights reserved.",
+            github: "GitHub",
+            linkedin: "LinkedIn",
+            email: "Email",
         },
     },
 
@@ -487,10 +511,22 @@ export const translations: Record<Lang, Translations> = {
             ],
         },
         contact: {
-
+            title: "Contacto",
+            subtitle: "¡Trabajemos juntos!",
+            emailButton: "Envíame un email",
+            linkedinButton: "LinkedIn",
+            fields: {
+                email: "Correo",
+                phone: "Teléfono",
+                location: "Ubicación",
+                github: "GitHub",
+            },
         },
         footer: {
-
+            footer: "Alex Rosell. Todos los derechos reservados.",
+            github: "GitHub",
+            linkedin: "LinkedIn",
+            email: "Correo",
         },
     },
 };
