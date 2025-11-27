@@ -68,9 +68,29 @@ export type SkillsTranslations = {
     languages: LanguageEntry[];
 };
 
+export type StudyItem = {
+    title: string;
+    place: string;
+    period: string;
+    description: string;
+};
 
-type EducationTexts = {
+export type CertificationItem = {
+    title: string;
+    place: string;
+    duration: string;
+    year: string;
+    description: string;
+    document: string | null;
+};
 
+export type EducationTranslations = {
+    title: string;
+    formalTitle: string;
+    certificationsTitle: string;
+    viewCertificateLabel: string;
+    studies: StudyItem[];
+    certifications: CertificationItem[];
 };
 
 type ContactTexts = {
@@ -96,7 +116,7 @@ type Translations = {
     };
     about: AboutTranslations;
     skills: SkillsTranslations;
-    education: EducationTexts;
+    education: EducationTranslations;
     contact: ContactTexts;
     footer: FooterTexts;
 };
@@ -245,7 +265,40 @@ export const translations: Record<Lang, Translations> = {
             ],
         },
         education: {
-
+            title: "Education & Certifications",
+            formalTitle: "Formal Education",
+            certificationsTitle: "Certifications",
+            viewCertificateLabel: "View Certificate",
+            studies: [
+                {
+                    title: "Master's Degree in Cybersecurity",
+                    place: "IES Caminàs",
+                    period: "2024 – 2025",
+                    description: "Advanced training focused on network defense, secure systems and threat analysis.",
+                },
+                {
+                    title: "Higher National Diploma in Multiplatform Application Development (DAM)",
+                    place: "Ágil Centros",
+                    period: "2021 – 2023",
+                    description: "Technical education centered on software development and cross-platform solutions.",
+                },
+                {
+                    title: "Vocational Diploma in Microcomputer Systems and Networks (SMR)",
+                    place: "IES Jaume I",
+                    period: "2019 – 2021",
+                    description: "Foundational studies in IT support, hardware maintenance and basic networking.",
+                },
+            ],
+            certifications: [
+                {
+                    title: "Linux Customization Course",
+                    place: "Hack4u",
+                    duration: "3 hours",
+                    year: "2025",
+                    description: "Linux workstation customization and workflow optimization following S4vitar’s professional setup.",
+                    document: "/documents/linux-customization-certificate.pdf",
+                },
+            ],
         },
         contact: {
 
@@ -398,7 +451,40 @@ export const translations: Record<Lang, Translations> = {
             ],
         },
         education: {
-
+            title: "Formación y certificaciones",
+            formalTitle: "Formación reglada",
+            certificationsTitle: "Certificaciones",
+            viewCertificateLabel: "Ver certificado",
+            studies: [
+                {
+                    title: "Máster en Ciberseguridad",
+                    place: "IES Caminàs",
+                    period: "2024 – 2025",
+                    description: "Formación avanzada centrada en defensa de redes, sistemas seguros y análisis de amenazas.",
+                },
+                {
+                    title: "Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)",
+                    place: "Ágil Centros",
+                    period: "2021 – 2023",
+                    description: "Formación técnica orientada al desarrollo de software y soluciones multiplataforma.",
+                },
+                {
+                    title: "Título de Técnico en Sistemas Microinformáticos y Redes (SMR)",
+                    place: "IES Jaume I",
+                    period: "2019 – 2021",
+                    description: "Estudios base en soporte IT, mantenimiento de hardware y redes básicas.",
+                },
+            ],
+            certifications: [
+                {
+                    title: "Curso de Personalización de Linux",
+                    place: "Hack4u",
+                    duration: "3 horas",
+                    year: "2025",
+                    description: "Personalización de estación de trabajo Linux y optimización del flujo de trabajo siguiendo la configuración profesional de S4vitar.",
+                    document: "/documents/linux-customization-certificate.pdf",
+                },
+            ],
         },
         contact: {
 
