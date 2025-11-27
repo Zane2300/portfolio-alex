@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import type { SkillsTranslations } from "../i18n/translations";
 
 import metasploitLogo from "../assets/tech/metasploit.png";
 import nmapLogo from "../assets/tech/nmap.png";
@@ -37,45 +38,49 @@ import javascriptLogo from "../assets/tech/javascript.png";
 import astroLogo from "../assets/tech/astro.png";
 import svelteLogo from "../assets/tech/svelte.png";
 
+interface Props {
+    t: SkillsTranslations;
+}
+
+const { t }: Props = Astro.props;
+
+// Secciones técnicas: aquí sólo definimos la estructura y los logos.
+// Los títulos y descripciones vienen del diccionario (t.sections), enlazados por "key".
 const sections = [
     {
-        title: "Cybersecurity & Ethical Hacking",
-        description: "Focused on securing infrastructures, reducing attack surface and practicing ethical hacking in lab environments.",
+        key: "cyber",
         items: [
             { name: "Metasploit", logo: metasploitLogo },
             { name: "Nmap", logo: nmapLogo },
             { name: "Nessus", logo: nessusLogo },
             { name: "OpenVAS", logo: openvasLogo },
             { name: "Burp Suite", logo: burpsuiteLogo },
-            { name: "OWASP Top 10", logo: owaspLogo }
+            { name: "OWASP Top 10", logo: owaspLogo },
         ],
     },
     {
-        title: "Systems & Networks",
-        description: "Windows / Linux infrastructure administration and secure network services.",
+        key: "systems",
         items: [
             { name: "Active Directory", logo: adLogo },
             { name: "Fortinet", logo: fortinetLogo },
             { name: "Proxy Squid", logo: proxysquidLogo },
             { name: "Linux", logo: linuxLogo },
-            { name: "Aruba switches", logo: arubaLogo }
+            { name: "Aruba switches", logo: arubaLogo },
         ],
     },
     {
-        title: "Digital Forensics & Analysis",
-        description: "Investigation of incidents and evidence acquisition in lab scenarios.",
+        key: "forensics",
         items: [
             { name: "Wireshark", logo: wiresharkLogo },
             { name: "Autopsy", logo: autopsyLogo },
             { name: "Volatility", logo: volatilityLogo },
             { name: "FTK Imager", logo: ftkimagerLogo },
             { name: "Magnet Forensics", logo: magnetforensicsLogo },
-            { name: "Exiftool", logo: exiftoolLogo }
+            { name: "Exiftool", logo: exiftoolLogo },
         ],
     },
     {
-        title: "DevOps & Automation",
-        description: "CI/CD pipelines, containerization and infrastructure monitoring for secure, repeatable deployments.",
+        key: "devops",
         items: [
             { name: "Docker", logo: dockerLogo },
             { name: "Jenkins", logo: jenkinsLogo },
@@ -84,100 +89,112 @@ const sections = [
             { name: "Grafana", logo: grafanaLogo },
             { name: "Kubernetes", logo: kubernetesLogo },
             { name: "Bash / Shell", logo: shellLogo },
-            { name: "Python", logo: pythonLogo }
+            { name: "Python", logo: pythonLogo },
         ],
     },
     {
-        title: "Web & Scripting",
-        description: "Dashboards, utilities and small apps that support security workflows.",
+        key: "web",
         items: [
             { name: "HTML", logo: htmlLogo },
             { name: "CSS", logo: cssLogo },
             { name: "JavaScript", logo: javascriptLogo },
             { name: "Astro", logo: astroLogo },
-            { name: "Svelte", logo: svelteLogo }
+            { name: "Svelte", logo: svelteLogo },
         ],
     },
 ];
+
+// Unimos secciones base + textos de traducción según la key
+const sectionsWithText = sections.map((section) => {
+    const text = t.sections.find((s) => s.key === section.key) ?? {
+        title: "",
+        description: "",
+    };
+    return {
+        ...section,
+        title: text.title,
+        description: text.description,
+    };
+});
 ---
+
 <section id="skills" class="scroll-mt-32">
     <header class="mb-10">
         <h2 class="flex items-center gap-3 text-3xl md:text-4xl font-semibold">
             <svg
-                class="w-6 h-6 text-primary" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
+                class="w-6 h-6 text-primary"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
                 stroke-width="2"
             >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                <path d="M5 9l14 0" /><path d="M5 15l14 0" />
-                <path d="M11 4l-4 16" /><path d="M17 4l-4 16" />
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M5 9l14 0" />
+                <path d="M5 15l14 0" />
+                <path d="M11 4l-4 16" />
+                <path d="M17 4l-4 16" />
             </svg>
-            Skills &amp; Tech Stack
+            {t.title}
         </h2>
     </header>
 
     {/* BENTO GRID */}
     <div class="grid gap-6 lg:grid-cols-3">
-        {sections.map((section) => (
-        <article class="rounded-3xl border border-bg-selection bg-bg-elevated/80 p-6 md:p-8 shadow-[0_24px_80px_rgba(0,0,0,0.55)]">
-            <h3 class="text-lg md:text-xl font-semibold text-primary mb-1">
-            {section.title}
-            </h3>
-            <p class="text-sm text-text-muted mb-4">
-                {section.description}
-            </p>
+        {sectionsWithText.map((section: any) => (
+            <article class="rounded-3xl border border-bg-selection bg-bg-elevated/80 p-6 md:p-8 shadow-[0_24px_80px_rgba(0,0,0,0.55)]">
+                <h3 class="text-lg md:text-xl font-semibold text-primary mb-1">
+                    {section.title}
+                </h3>
+                <p class="text-sm text-text-muted mb-4">
+                    {section.description}
+                </p>
 
-            <ul class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-            {section.items.map((item) => (
-                <li class="flex flex-col items-center gap-2">
-                <div class="flex h-20 w-20 items-center justify-center rounded-2xl border border-bg-selection bg-bg-dark/80 shadow-[0_14px_40px_rgba(0,0,0,0.45)]">
-                    <Image
-                    src={item.logo}
-                    alt={item.name}
-                    class="h-12 w-12 object-contain"
-                    loading="lazy"
-                    />
-                </div>
-                <span class="text-xs text-text-muted text-center">
-                    {item.name}
-                </span>
-                </li>
-            ))}
-            </ul>
-        </article>
+                <ul class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    {section.items.map((item: any) => (
+                        <li class="flex flex-col items-center gap-2">
+                            <div class="flex h-20 w-20 items-center justify-center rounded-2xl border border-bg-selection bg-bg-dark/80 shadow-[0_14px_40px_rgba(0,0,0,0.45)]">
+                                <Image src={item.logo} alt={item.name} class="h-12 w-12 object-contain" loading="lazy" />
+                            </div>
+                            <span class="text-xs text-text-muted text-center">
+                                {item.name}
+                            </span>
+                        </li>
+                    ))}
+                </ul>
+            </article>
         ))}
     </div>
 
     {/* SOFT SKILLS & LANGUAGES */}
     <div class="mt-10 grid gap-6 md:grid-cols-2">
         <article class="rounded-3xl border border-bg-selection bg-bg-elevated/80 p-6 md:p-7 shadow-[0_24px_80px_rgba(0,0,0,0.55)]">
-            <h3 class="text-lg font-semibold text-primary mb-3">Soft Skills</h3>
+            <h3 class="text-lg font-semibold text-primary mb-3">
+                {t.softSkillsTitle}
+            </h3>
             <ul class="space-y-1 text-sm text-text">
-                <li>Leadership & mentoring in technical teams.</li>
-                <li>Clear, direct communication with stakeholders.</li>
-                <li>Teamwork under pressure and incident response.</li>
-                <li>Problem-solving mindset and ownership.</li>
-                <li>Self-taught, curious and proactive.</li>
+                {t.softSkills.map((text: string) => (
+                    <li>
+                        {text}
+                    </li>
+                ))}
             </ul>
         </article>
 
         <article class="rounded-3xl border border-bg-selection bg-bg-elevated/80 p-6 md:p-7 shadow-[0_24px_80px_rgba(0,0,0,0.55)]">
-            <h3 class="text-lg font-semibold text-primary mb-3">Languages</h3>
+            <h3 class="text-lg font-semibold text-primary mb-3">
+                {t.languagesTitle}
+            </h3>
             <dl class="space-y-1 text-sm text-text">
-                <div class="flex justify-between">
-                    <dt>Spanish</dt>
-                    <dd class="text-text-muted/80">Native</dd>
-                </div>
-                <div class="flex justify-between">
-                    <dt>Valencian</dt>
-                    <dd class="text-text-muted/80">Native</dd>
-                </div>
-                <div class="flex justify-between">
-                    <dt>English</dt>
-                    <dd class="text-text-muted/80">B1</dd>
-                </div>
+                {t.languages.map((lang) => (
+                    <div class="flex justify-between">
+                        <dt>
+                            {lang.name}
+                        </dt>
+                        <dd class="text-text-muted/80">
+                            {lang.level}
+                        </dd>
+                    </div>
+                ))}
             </dl>
         </article>
     </div>

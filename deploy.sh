@@ -1,6 +1,10 @@
 #!/bin/bash
 
-set -e  # parar si hay error
+set -e  # stop if error
+
+# Auto-fix CRLF if someone edited this file in Windows
+dos2unix "$0" 2>/dev/null
+
 echo "📦 Installing Node Modules..."
 npm install
 

@@ -46,9 +46,28 @@ export type AboutTranslations = {
     paragraphs: string[];
 };
 
-type SkillsTexts = {
+export type SkillSectionKey = "cyber" | "systems" | "forensics" | "devops" | "web";
 
+export type SkillsSectionText = {
+    key: SkillSectionKey;
+    title: string;
+    description: string;
 };
+
+export type LanguageEntry = {
+    name: string;
+    level: string;
+};
+
+export type SkillsTranslations = {
+    title: string;
+    sections: SkillsSectionText[];
+    softSkillsTitle: string;
+    softSkills: string[];
+    languagesTitle: string;
+    languages: LanguageEntry[];
+};
+
 
 type EducationTexts = {
 
@@ -76,7 +95,7 @@ type Translations = {
         items: ProjectItem[];
     };
     about: AboutTranslations;
-    skills: SkillsTexts;
+    skills: SkillsTranslations;
     education: EducationTexts;
     contact: ContactTexts;
     footer: FooterTexts;
@@ -175,14 +194,55 @@ export const translations: Record<Lang, Translations> = {
         about: {
             title: "About Me",
             paragraphs: [
-                `I’m a <highlight>cybersecurity & systems specialist</highlight> focused on securing infrastructures and reducing operational risk. I work with firewalls, networks and Active Directory to keep critical systems stable, resilient and protected.`,
-                `I’ve supported corporate and public-sector environments, handling firewall administration, switch management, datacenter expansion and incident response — helping teams strengthen their security posture and operate more efficiently.`,
-                `I’m driven by technical challenges: identifying weaknesses, hardening services and applying practical solutions that improve reliability and reduce attack surface.`,
-                `Right now I’m deepening my expertise in <highlight>digital forensics</highlight>, <highlight>Red Team operations</highlight> and <highlight>DevOps security</highlight>, combining a hands-on mindset with continuous learning and a strong focus on problem-solving.`,
+                "I’m a <highlight>cybersecurity & systems specialist</highlight> focused on securing infrastructures and reducing operational risk. I work with firewalls, networks and Active Directory to keep critical systems stable, resilient and protected.",
+                "I’ve supported corporate and public-sector environments, handling firewall administration, switch management, datacenter expansion and incident response — helping teams strengthen their security posture and operate more efficiently.",
+                "I’m driven by technical challenges: identifying weaknesses, hardening services and applying practical solutions that improve reliability and reduce attack surface.",
+                "Right now I’m deepening my expertise in <highlight>digital forensics</highlight>, <highlight>Red Team operations</highlight> and <highlight>DevOps security</highlight>, combining a hands-on mindset with continuous learning and a strong focus on problem-solving.",
             ],
         },
         skills: {
-
+            title: "Skills & Tech Stack",
+            sections: [
+                {
+                    key: "cyber",
+                    title: "Cybersecurity & Ethical Hacking",
+                    description: "Focused on securing infrastructures, reducing attack surface and practicing ethical hacking in lab environments.",
+                },
+                {
+                    key: "systems",
+                    title: "Systems & Networks",
+                    description: "Windows / Linux infrastructure administration and secure network services.",
+                },
+                {
+                    key: "forensics",
+                    title: "Digital Forensics & Analysis",
+                    description: "Investigation of incidents and evidence acquisition in lab scenarios.",
+                },
+                {
+                    key: "devops",
+                    title: "DevOps & Automation",
+                    description: "CI/CD pipelines, containerization and infrastructure monitoring for secure, repeatable deployments.",
+                },
+                {
+                    key: "web",
+                    title: "Web & Scripting",
+                    description: "Dashboards, utilities and small apps that support security workflows.",
+                },
+            ],
+            softSkillsTitle: "Soft Skills",
+            softSkills: [
+                "Leadership & mentoring in technical teams.",
+                "Clear, direct communication with stakeholders.",
+                "Teamwork under pressure and incident response.",
+                "Problem-solving mindset and ownership.",
+                "Self-taught, curious and proactive.",
+            ],
+            languagesTitle: "Languages",
+            languages: [
+                { name: "Spanish", level: "Native" },
+                { name: "Valencian", level: "Native" },
+                { name: "English", level: "B1" },
+            ],
         },
         education: {
 
@@ -287,14 +347,55 @@ export const translations: Record<Lang, Translations> = {
         about: {
             title: "Sobre mí",
             paragraphs: [
-                `Soy <highlight>especialista en ciberseguridad y sistemas</highlight>, centrado en securizar infraestructuras y reducir el riesgo operativo. Trabajo con cortafuegos, redes y Active Directory para mantener sistemas críticos estables, resilientes y protegidos.`,
-                `He trabajado tanto en entornos corporativos como en la administración pública, gestionando firewalls, switches gestionados, ampliaciones de datacenter y respuesta a incidencias, ayudando a los equipos a reforzar su postura de seguridad y a operar de forma más eficiente.`,
-                `Me motivan los retos técnicos: identificar debilidades, bastionar servicios y aplicar soluciones prácticas que mejoren la fiabilidad y reduzcan la superficie de ataque.`,
-                `Actualmente estoy profundizando en <highlight>informática forense</highlight>, <highlight>operaciones de Red Team</highlight> y <highlight>seguridad en entornos DevOps</highlight>, combinando una mentalidad práctica con aprendizaje continuo y un fuerte foco en la resolución de problemas.`,
+                "Soy <highlight>especialista en ciberseguridad y sistemas</highlight>, centrado en securizar infraestructuras y reducir el riesgo operativo. Trabajo con cortafuegos, redes y Active Directory para mantener sistemas críticos estables, resilientes y protegidos.",
+                "He trabajado tanto en entornos corporativos como en la administración pública, gestionando firewalls, switches gestionados, ampliaciones de datacenter y respuesta a incidencias, ayudando a los equipos a reforzar su postura de seguridad y a operar de forma más eficiente.",
+                "Me motivan los retos técnicos: identificar debilidades, bastionar servicios y aplicar soluciones prácticas que mejoren la fiabilidad y reduzcan la superficie de ataque.",
+                "Actualmente estoy profundizando en <highlight>informática forense</highlight>, <highlight>operaciones de Red Team</highlight> y <highlight>seguridad en entornos DevOps</highlight>, combinando una mentalidad práctica con aprendizaje continuo y un fuerte foco en la resolución de problemas.",
             ],
         },
         skills: {
-
+            title: "Habilidades y stack tecnológico",
+            sections: [
+                {
+                    key: "cyber",
+                    title: "Ciberseguridad y hacking ético",
+                    description: "Enfoque en securizar infraestructuras, reducir la superficie de ataque y practicar hacking ético en entornos de laboratorio.",
+                },
+                {
+                    key: "systems",
+                    title: "Sistemas y redes",
+                    description: "Administración de infraestructuras Windows / Linux y servicios de red seguros.",
+                },
+                {
+                    key: "forensics",
+                    title: "Informática forense y análisis",
+                    description: "Investigación de incidentes y adquisición de evidencias en escenarios de laboratorio.",
+                },
+                {
+                    key: "devops",
+                    title: "DevOps y automatización",
+                    description: "Pipelines CI/CD, contenedores y monitorización de infraestructuras para despliegues seguros y repetibles.",
+                },
+                {
+                    key: "web",
+                    title: "Web y scripting",
+                    description: "Dashboards, utilidades y pequeñas aplicaciones que apoyan flujos de trabajo de seguridad.",
+                },
+            ],
+            softSkillsTitle: "Competencias personales",
+            softSkills: [
+                "Liderazgo y mentoring en equipos técnicos.",
+                "Comunicación clara y directa con personas clave.",
+                "Trabajo en equipo bajo presión y respuesta a incidencias.",
+                "Mentalidad de resolución de problemas y sentido de responsabilidad.",
+                "Autodidacta, curioso y proactivo.",
+            ],
+            languagesTitle: "Idiomas",
+            languages: [
+                { name: "Español", level: "Nativo" },
+                { name: "Valenciano", level: "Nativo" },
+                { name: "Inglés", level: "B1" },
+            ],
         },
         education: {
 
