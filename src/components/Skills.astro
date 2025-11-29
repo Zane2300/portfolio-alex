@@ -117,7 +117,6 @@ const sectionsWithText = sections.map((section) => {
     };
 });
 ---
-
 <section id="skills" class="scroll-mt-32">
     <header class="mb-10">
         <h2 class="flex items-center gap-3 text-3xl md:text-4xl font-semibold">
@@ -173,8 +172,10 @@ const sectionsWithText = sections.map((section) => {
             </h3>
             <ul class="space-y-1 text-sm text-text">
                 {t.softSkills.map((text: string) => (
-                    <li>
-                        {text}
+                    <li class="border-l-2 border-primary/60 pl-4">
+                        <p class="text-base">
+                            {text}
+                        </p>
                     </li>
                 ))}
             </ul>
@@ -186,11 +187,11 @@ const sectionsWithText = sections.map((section) => {
             </h3>
             <dl class="space-y-1 text-sm text-text">
                 {t.languages.map((lang) => (
-                    <div class="flex justify-between">
-                        <dt>
+                    <div class="flex justify-between border-l-2 border-primary/60 pl-4">
+                        <dt class="text-base">
                             {lang.name}
                         </dt>
-                        <dd class="text-text-muted/80">
+                        <dd class="text-base text-text-muted/80">
                             {lang.level}
                         </dd>
                     </div>

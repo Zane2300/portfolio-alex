@@ -289,13 +289,13 @@ export const translations: Record<Lang, Translations> = {
                     description: "Advanced training focused on network defense, secure systems and threat analysis.",
                 },
                 {
-                    title: "Higher National Diploma in Multiplatform Application Development (DAM)",
+                    title: "Senior Technician in Multiplatform Application Development",
                     place: "Ágil Centros",
                     period: "2021 – 2023",
                     description: "Technical education centered on software development and cross-platform solutions.",
                 },
                 {
-                    title: "Vocational Diploma in Microcomputer Systems and Networks (SMR)",
+                    title: "Technician in Microcomputer Systems and Networks",
                     place: "IES Jaume I",
                     period: "2019 – 2021",
                     description: "Foundational studies in IT support, hardware maintenance and basic networking.",
@@ -493,7 +493,7 @@ export const translations: Record<Lang, Translations> = {
                     description: "Formación técnica orientada al desarrollo de software y soluciones multiplataforma.",
                 },
                 {
-                    title: "Título de Técnico en Sistemas Microinformáticos y Redes (SMR)",
+                    title: "Técnico en Sistemas Microinformáticos y Redes (SMR)",
                     place: "IES Jaume I",
                     period: "2019 – 2021",
                     description: "Estudios base en soporte IT, mantenimiento de hardware y redes básicas.",
