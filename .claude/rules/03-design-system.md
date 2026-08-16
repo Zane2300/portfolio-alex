@@ -15,7 +15,8 @@ Tokens disponibles:
 | `--color-bg-selection` | **bordes** y separadores |
 | `--color-text` | texto principal |
 | `--color-text-muted` | secundario, metadatos, fechas |
-| `--color-primary` / `-light` / `-dark` | rojo de marca (CTAs, acentos, `<highlight>`) |
+| `--color-primary` / `-light` / `-dark` | rojo de marca para **texto, bordes y acentos** sobre el fondo de página (`text-primary`, `border-primary`, `<highlight>`) |
+| `--color-primary-surface` | rojo de marca para **relleno sólido de superficies que llevan texto inverso encima** (`bg-primary-surface` + `text-bg`): botones CTA y el thumb del toggle de idioma. **No uses `bg-primary-surface` para texto ni `text-primary` para rellenos con texto encima** — ver nota de contraste debajo |
 | `red` `orange` `yellow` `green` `cyan` `blue` `purple` | acentos One Dark para categorías |
 | `--color-logo-chip` | **excepción deliberada**: fondo fijo, *idéntico* en claro y oscuro, para los logos monocromos oscuros (VMware, Bash/Shell) que serían ilegibles sobre `bg-bg-dark`. No lleva variante clara **a propósito** |
 
@@ -25,6 +26,26 @@ En clases: `bg-bg`, `bg-bg-elevated/70`, `text-text`, `text-text-muted`,
 ⛔ Prohibido: `bg-gray-800`, `text-slate-400`, `border-zinc-700`, `#282c34`, `rgb(...)`
 en clases utilitarias. Si necesitas un color que no existe como token, **crea el token**
 en `@theme` (y su variante clara) antes de usarlo.
+
+### `--color-primary` vs `--color-primary-surface`
+
+Son dos tokens deliberadamente distintos porque resuelven requisitos de contraste
+opuestos (detectado ago. 2026: el rojo "no era el mismo" entre temas porque un único
+token cargaba con los dos roles):
+
+- **`--color-primary`** (texto/borde/acento): necesita contraste ≥4.5:1 contra
+  `--color-bg`/`--color-bg-elevated`. Mismo tono (H355°, S65%) en los dos temas, solo
+  cambia la luminosidad para pasar el umbral: oscuro `#e06c75` (L65%), claro `#d22d3a`
+  (L50%).
+- **`--color-primary-surface`** (relleno sólido con `text-bg` encima: botones CTA,
+  thumb del toggle de idioma): como `text-bg` invierte de claro a oscuro con el tema,
+  este token necesita ser claro en oscuro y oscuro en claro — no puede compartir el
+  mismo valor ni la misma lógica de tono que `--color-primary`. Valores sin cambios
+  respecto al antiguo `--color-primary`: oscuro `#e06c75`, claro `#e11d48`.
+
+Si añades un elemento con relleno sólido y texto encima (otro botón CTA, otro toggle),
+usa `bg-primary-surface`, no `bg-primary`. Si es texto, borde o un tinte suave
+(`bg-primary/15` tipo badge), usa `primary` a secas.
 
 ## Tema claro / oscuro (invertido respecto a la convención)
 

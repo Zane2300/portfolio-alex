@@ -1,6 +1,7 @@
 ---
 import ThemeToggle from "./ThemeToggle.svelte";
 import LanguageToggle from "./LanguageToggle.svelte";
+import NavLinks from "./NavLinks.svelte";
 
 const { lang, t } = Astro.props;
 
@@ -13,45 +14,76 @@ const links = [
     { href: "#education", label: t.education },
     { href: "#contact", label: t.contact },
 ];
+
+const githubUrl = "https://github.com/Zane2300";
+const linkedinUrl = "https://www.linkedin.com/in/alex-rosell-angullo";
 ---
 
-<nav class="mx-auto max-w-6xl px-4 py-4 flex justify-center">
+<nav class="mx-auto max-w-5xl px-4 py-4 flex justify-center">
+    <!-- Pill del ancho de su contenido (sin w-full): evita el "aire muerto" de una
+         barra estirada a todo el viewport cuando el contenido real es más estrecho. -->
     <div
-        class="backdrop-blur-lg bg-bg-elevated/60 border border-bg-selection
-            px-4 md:px-8 py-3 shadow-lg shadow-black/10
-            flex items-center gap-4 md:gap-8
-            rounded-full max-w-full w-full"
+        class="relative backdrop-blur-lg bg-bg-elevated/60 border border-bg-selection
+            px-4 md:px-6 py-3 shadow-lg shadow-black/10
+            flex items-center gap-4 md:gap-6
+            rounded-full max-w-full"
     >
-        <!-- NAME / LOGO -->
+        <!-- NAME / LOGO: monograma "AR" (superficie + texto inverso, mismo patrón que
+             los botones CTA) + apellido, oculto en móvil. Único enlace a #home. -->
         <a
-        href="#home"
-        class="text-sm font-semibold text-text hover:text-primary transition-colors"
+            href="#home"
+            class="group flex shrink-0 items-center gap-2 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
-        Alex
+            <span
+                class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary-surface text-xs font-bold text-bg transition-transform group-hover:scale-105"
+            >
+                AR
+            </span>
+            <span class="hidden text-sm font-semibold text-text transition-colors group-hover:text-primary sm:inline">
+                Rosell
+            </span>
         </a>
 
-        <!-- LINKS
-            - ocultos solo en móviles muy pequeños (<640): hidden sm:flex
-            - permiten varias filas: flex-wrap
-            - centrados entre logo y toggles: flex-1 justify-center
-        -->
-        <ul
-        class="hidden sm:flex flex-1 flex-wrap items-center justify-center
-                gap-x-6 gap-y-1 text-sm font-medium text-text-muted"
-        >
-        {links.map((link) => (
-            <li>
-            <a href={link.href} class="hover:text-primary transition-colors">
-                {link.label}
-            </a>
-            </li>
-        ))}
-        </ul>
+        <!-- LINKS: isla con scrollspy (desktop) + hamburguesa y panel (móvil, <640px).
+             client:visible porque no es crítica para el primer render, pero la navbar
+             siempre está en el viewport inicial así que hidrata casi de inmediato. -->
+        <NavLinks
+            links={links}
+            menuOpenLabel={t.menuOpenLabel}
+            menuCloseLabel={t.menuCloseLabel}
+            githubUrl={githubUrl}
+            githubLabel={t.github}
+            linkedinUrl={linkedinUrl}
+            linkedinLabel={t.linkedin}
+            client:visible
+        />
 
-        <!-- RIGHT: Language switch + Theme toggle -->
-        <div class="ml-auto flex items-center gap-3">
+        <!-- RIGHT: GitHub/LinkedIn (solo ≥640px, estático) + toggles, grupo compacto -->
+        <div class="ml-auto flex items-center gap-2">
+            <a
+                href={githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t.github}
+                class="hidden sm:inline-flex items-center justify-center rounded-full border border-bg-selection bg-bg-elevated/70 p-2 text-text-muted transition-colors hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            >
+                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.95c.58.1.79-.25.79-.56v-1.96c-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.28-1.67-1.28-1.67-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.72-1.55-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.28 1.2-3.08-.12-.29-.52-1.46.12-3.04 0 0 .98-.31 3.2 1.18a11.1 11.1 0 0 1 2.92-.39c.99 0 1.99.13 2.92.39 2.22-1.49 3.2-1.18 3.2-1.18.64 1.58.24 2.75.12 3.04.75.8 1.2 1.82 1.2 3.08 0 4.43-2.69 5.4-5.25 5.68.41.36.77 1.1.77 2.22v3.29c0 .31.2.67.79.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
+                </svg>
+            </a>
+            <a
+                href={linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t.linkedin}
+                class="hidden sm:inline-flex items-center justify-center rounded-full border border-bg-selection bg-bg-elevated/70 p-2 text-text-muted transition-colors hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            >
+                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.27c-.96 0-1.73-.79-1.73-1.76s.77-1.76 1.73-1.76 1.73.79 1.73 1.76-.77 1.76-1.73 1.76zm13.5 11.27h-3v-5.6c0-1.34-.03-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96v5.7h-3v-10h2.88v1.36h.04c.4-.76 1.37-1.56 2.82-1.56 3.01 0 3.57 1.98 3.57 4.55v5.65z" />
+                </svg>
+            </a>
             <LanguageToggle lang={lang} client:load />
-            <ThemeToggle client:load />
+            <ThemeToggle toLightLabel={t.themeToLight} toDarkLabel={t.themeToDark} client:load />
         </div>
     </div>
 </nav>

@@ -11,6 +11,15 @@ type NavTexts = {
     skills: string;
     education: string;
     contact: string;
+    // aria-label del toggle de tema: describe el DESTINO del clic, no el estado actual
+    themeToLight: string;
+    themeToDark: string;
+    // aria-label de los iconos sociales de la navbar (icon-only, sin texto visible)
+    github: string;
+    linkedin: string;
+    // botón hamburguesa en móvil
+    menuOpenLabel: string;
+    menuCloseLabel: string;
 };
 
 type HeroTexts = {
@@ -85,6 +94,9 @@ export type StudyItem = {
     place: string;
     period: string;
     description: string;
+    // Formación aún no iniciada (p. ej. matriculado con fecha de inicio futura).
+    // Se usa para marcar la entrada como "próxima" en vez de completada.
+    upcoming?: boolean;
 };
 
 export type CertificationItem = {
@@ -108,6 +120,7 @@ export type EducationTranslations = {
     viewCertificateLabel: string;
     verifyLabel: string;
     credentialIdLabel: string;
+    upcomingLabel: string;
     studies: StudyItem[];
     certifications: CertificationItem[];
 };
@@ -163,12 +176,18 @@ export const translations: Record<Lang, Translations> = {
             skills: "Skills",
             education: "Education",
             contact: "Contact",
+            themeToLight: "Switch to light theme",
+            themeToDark: "Switch to dark theme",
+            github: "GitHub",
+            linkedin: "LinkedIn",
+            menuOpenLabel: "Open menu",
+            menuCloseLabel: "Close menu",
         },
         hero: {
             badge: "CYBERSECURITY · SYSTEMS · AUTOMATION",
             greeting: "Hi, I'm",
-            titleLine: "I build secure & reliable systems.",
-            subtitle: "3 years of experience. <highlight>Cybersecurity & Systems Specialist</highlight> based in Burriana, Spain. Experienced in networks, systems administration and ethical hacking.",
+            titleLine: "I build secure, well-managed, automated infrastructure.",
+            subtitle: "3 years of experience in systems, security and automation, based in Burriana, Spain. <highlight>Aiming to specialize as a Security Engineer</highlight> in corporate environments.",
             github: "GitHub",
             linkedin: "LinkedIn",
             email: "Email",
@@ -252,10 +271,12 @@ export const translations: Record<Lang, Translations> = {
         about: {
             title: "About Me",
             paragraphs: [
-                "I’m a <highlight>cybersecurity & systems specialist</highlight> focused on securing infrastructures and reducing operational risk. I work with firewalls, networks and Active Directory to keep critical systems stable, resilient and protected.",
-                "I’ve supported corporate and public-sector environments, handling firewall administration, switch management, datacenter expansion and incident response — helping teams strengthen their security posture and operate more efficiently.",
-                "I’m driven by technical challenges: identifying weaknesses, hardening services and applying practical solutions that improve reliability and reduce attack surface.",
-                "Right now I’m focused on <highlight>infrastructure security</highlight> and <highlight>automation</highlight>: hardening the systems I run, applying Zero-Trust principles and building workflows that take repetitive work away from technicians and users alike.",
+                "<highlight>I secure, administer and automate infrastructure.</highlight>",
+                "I'm a systems technician specialized in <highlight>cybersecurity</highlight>. My work comes down to three things: protecting and auditing systems, administering the infrastructure that runs them, and automating everything that repeats.",
+                "At the Ayuntamiento de Burriana I administered the network and datacenter of a public-sector environment: Fortinet firewalls, managed switches, Active Directory and datacenter expansion. That's where I learned security isn't a layer bolted on at the end — it's decisions made while designing and maintaining the infrastructure itself.",
+                "Today, at Ciberia Tech, I work on the integration and continuous improvement of systems under <highlight>Zero-Touch</highlight> and <highlight>Zero-Trust</highlight> policies, and I build AI-powered automation workflows that cut repetitive work for both end users and the technical team.",
+                "I come from support and administration, not theory: I've resolved incidents in front of the user, mentored interns and know how systems actually break in production. That perspective is what I now apply to hardening, network segmentation and access control.",
+                "In October 2026 I'll start a Bachelor's Degree in Computer Science at Universitat Carlemany, aiming to grow into a <highlight>Security Engineer</highlight> role in corporate environments — combining formal education with hands-on experience running real infrastructure.",
             ],
         },
         skills: {
@@ -299,7 +320,15 @@ export const translations: Record<Lang, Translations> = {
             viewCertificateLabel: "View Certificate",
             verifyLabel: "Verify",
             credentialIdLabel: "Credential ID",
+            upcomingLabel: "Starting Oct 2026",
             studies: [
+                {
+                    title: "Bachelor's Degree in Computer Science",
+                    place: "Universitat Carlemany (Andorra)",
+                    period: "Oct 2026 – 2029 (expected)",
+                    description: "Official university degree (180 ECTS, EQF level 6) covering programming, systems administration, networking, databases, cloud computing and artificial intelligence.",
+                    upcoming: true,
+                },
                 {
                     title: "Master's Degree in Cybersecurity",
                     place: "IES Caminàs",
@@ -382,12 +411,18 @@ export const translations: Record<Lang, Translations> = {
             skills: "Skills",
             education: "Formación",
             contact: "Contacto",
+            themeToLight: "Cambiar a tema claro",
+            themeToDark: "Cambiar a tema oscuro",
+            github: "GitHub",
+            linkedin: "LinkedIn",
+            menuOpenLabel: "Abrir menú",
+            menuCloseLabel: "Cerrar menú",
         },
         hero: {
             badge: "CIBERSEGURIDAD · SISTEMAS · AUTOMATIZACIÓN",
             greeting: "Hola, soy",
-            titleLine: "Diseño sistemas seguros y fiables.",
-            subtitle: "3 años de experiencia. <highlight>Especialista en Ciberseguridad y Sistemas</highlight> con base en Burriana, España. Experiencia en redes, administración de sistemas y hacking ético.",
+            titleLine: "Construyo infraestructura segura, gestionada y automatizada.",
+            subtitle: "3 años de experiencia en sistemas, seguridad y automatización, con base en Burriana, España. <highlight>Aspiro a especializarme como Security Engineer</highlight> en entornos corporativos.",
             github: "GitHub",
             linkedin: "LinkedIn",
             email: "Correo",
@@ -471,10 +506,12 @@ export const translations: Record<Lang, Translations> = {
         about: {
             title: "Sobre mí",
             paragraphs: [
-                "Soy <highlight>especialista en ciberseguridad y sistemas</highlight>, centrado en securizar infraestructuras y reducir el riesgo operativo. Trabajo con cortafuegos, redes y Active Directory para mantener sistemas críticos estables, resilientes y protegidos.",
-                "He trabajado tanto en entornos corporativos como en la administración pública, gestionando firewalls, switches gestionados, ampliaciones de datacenter y respuesta a incidencias, ayudando a los equipos a reforzar su postura de seguridad y a operar de forma más eficiente.",
-                "Me motivan los retos técnicos: identificar debilidades, bastionar servicios y aplicar soluciones prácticas que mejoren la fiabilidad y reduzcan la superficie de ataque.",
-                "Ahora mismo estoy centrado en la <highlight>seguridad de la infraestructura</highlight> y en la <highlight>automatización</highlight>: fortificar los sistemas que administro, aplicar principios Zero-Trust y construir flujos que quiten trabajo repetitivo a técnicos y usuarios.",
+                "<highlight>Aseguro, administro y automatizo infraestructura.</highlight>",
+                "Soy técnico de sistemas especializado en <highlight>ciberseguridad</highlight>. Mi trabajo se resume en tres cosas: proteger y auditar los sistemas, administrar la infraestructura que los sostiene y automatizar todo lo que se repite.",
+                "En el Ayuntamiento de Burriana administré la red y el CPD de un entorno público: firewalls Fortinet, switches gestionables, Active Directory y la ampliación del centro de proceso de datos. Ahí aprendí que la seguridad no es una capa que se añade al final, sino decisiones que se toman al diseñar y mantener la infraestructura.",
+                "Hoy, en Ciberia Tech, trabajo en la integración y mejora continua de sistemas bajo políticas <highlight>Zero-Touch</highlight> y <highlight>Zero-Trust</highlight>, y construyo flujos de automatización con IA que reducen el trabajo repetitivo tanto para los usuarios como para el equipo técnico.",
+                "Vengo del soporte y la administración, no de la teoría: he resuelto incidencias delante del usuario, he tutorizado a compañeros en prácticas y sé cómo se rompe un sistema en producción. Esa perspectiva es la que aplico ahora a hardening, segmentación de red y control de accesos.",
+                "En octubre de 2026 comienzo el Bàtxelor en Informática en la Universitat Carlemany, con el objetivo de consolidarme como <highlight>Security Engineer</highlight> en entornos corporativos, combinando la formación universitaria con la experiencia operando infraestructura real.",
             ],
         },
         skills: {
@@ -518,7 +555,15 @@ export const translations: Record<Lang, Translations> = {
             viewCertificateLabel: "Ver certificado",
             verifyLabel: "Verificar",
             credentialIdLabel: "ID de credencial",
+            upcomingLabel: "Próximamente",
             studies: [
+                {
+                    title: "Bàtxelor en Informática",
+                    place: "Universitat Carlemany (Andorra)",
+                    period: "oct. 2026 – 2029 (previsto)",
+                    description: "Grado universitario oficial (180 ECTS, nivel 6 EQF) en programación, administración de sistemas, redes, bases de datos, cloud computing e inteligencia artificial.",
+                    upcoming: true,
+                },
                 {
                     title: "Máster en Ciberseguridad",
                     place: "IES Caminàs",

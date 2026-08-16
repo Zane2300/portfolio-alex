@@ -29,6 +29,28 @@ ciberseguridad, con experiencia en Active Directory, administración de sistemas
 desarrollo web full stack y soporte técnico. Capacidad de adaptación, iniciativa, trabajo
 en equipo y orientación a resultados.
 
+**Texto canónico "Acerca de" (ago. 2026):** copia literal del "Acerca de" de LinkedIn —
+portfolio y LinkedIn cuentan la misma historia. Vive en `about.paragraphs` (EN+ES) de
+`translations.ts`, 6 párrafos:
+
+1. Tagline: "Aseguro, administro y automatizo infraestructura."
+2. Rol actual en tres verbos: proteger/auditar, administrar, automatizar.
+3. Ayuntamiento de Burriana: firewalls Fortinet, switches, AD, CPD — la seguridad como
+   decisión de diseño, no como capa final.
+4. Ciberia Tech: Zero-Touch/Zero-Trust, automatización con IA.
+5. Procedencia (soporte/administración, no teoría): incidencias, tutoría, producción.
+6. Objetivo: Bàtxelor en Informática (oct. 2026) + consolidarse como Security Engineer.
+
+Si Alex actualiza su "Acerca de" de LinkedIn, este texto se resincroniza aquí y en
+`translations.ts` (EN+ES) en el mismo turno — no se edita solo uno de los dos.
+
+**Hero (ago. 2026):** titular *"Construyo infraestructura segura, gestionada y
+automatizada."* / *"I build secure, well-managed, automated infrastructure."* — alinea con
+los tres verbos del badge (asegurar·administrar·automatizar). Entradilla menciona los 3
+años de experiencia, Burriana (España) y la aspiración a Security Engineer **sin afirmar
+que ya lo es** (el puesto actual es Técnico L1 CAU). No usar "hacking ético" ni nada que
+suene a red team: el posicionamiento es blue team (ver sección Skills más abajo).
+
 ---
 
 ## Experiencia laboral
@@ -75,9 +97,16 @@ en equipo y orientación a resultados.
 
 | Centro | Titulación | Fechas |
 |---|---|---|
+| Universitat Carlemany (Andorra) | **Bàtxelor en Informática** (EN: *Bachelor's Degree in Computer Science*) — online, 180 ECTS, 3 años, nivel 6 EQF, primer ciclo EEES, acreditado por AQUA | oct. 2026 – 2029 (previsto) |
 | IES Caminàs | **Máster en Ciberseguridad** (Computer & Information Systems Security / Information Assurance) | oct. 2024 – jun. 2025 |
 | Ágil Centros | **CFGS Desarrollo de Aplicaciones Multiplataforma (DAM)** | sept. 2021 – jul. 2023 |
 | IES Jaume I | **CFGM Sistemas Microinformáticos y Redes (SMR)** | sept. 2019 – jun. 2021 |
+
+> ⚠️ El Bàtxelor **no es "Ingeniería Informática"** ni "Ingeniero": el título oficial andorrano
+> no lleva esa denominación. No lo llames así en ningún idioma. Empieza oct. 2026, aún no
+> cursado: en `translations.ts` va como primera entrada de `studies[]` con `upcoming: true`,
+> que en `Education.astro` pinta una píldora "Próximamente" / "Starting Oct 2026" junto al
+> título (mismo estilo de badge que las píldoras de `Skills.astro`).
 
 ---
 

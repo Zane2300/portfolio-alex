@@ -58,8 +58,13 @@ const badgeMap: Record<CertificationItem["id"], { src: ImageMetadata; size: stri
                 <ul class="space-y-4">
                     {t.studies.map((item: StudyItem) => (
                         <li class="border-l-2 border-primary/60 pl-4">
-                            <h4 class="text-base md:text-lg font-semibold">
+                            <h4 class="flex flex-wrap items-center gap-2 text-base md:text-lg font-semibold">
                                 {item.title}
+                                {item.upcoming && (
+                                    <span class="rounded-full border border-primary/40 bg-primary/15 px-2.5 py-0.5 text-xs font-semibold text-text">
+                                        {t.upcomingLabel}
+                                    </span>
+                                )}
                             </h4>
                             <p class="text-sm">
                                 {item.place} • {item.period}
