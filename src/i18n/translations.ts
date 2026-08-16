@@ -46,7 +46,7 @@ export type AboutTranslations = {
     paragraphs: string[];
 };
 
-export type SkillSectionKey = "cyber" | "systems" | "forensics" | "devops" | "web";
+export type SkillSectionKey = "security" | "systems" | "automation";
 
 export type SkillsSectionText = {
     key: SkillSectionKey;
@@ -59,11 +59,23 @@ export type LanguageEntry = {
     level: string;
 };
 
+export type SoftSkillKey =
+    | "mentoring"
+    | "communication"
+    | "incidents"
+    | "diagnosis"
+    | "selfTaught";
+
+export type SoftSkillItem = {
+    key: SoftSkillKey;
+    text: string;
+};
+
 export type SkillsTranslations = {
     title: string;
     sections: SkillsSectionText[];
     softSkillsTitle: string;
-    softSkills: string[];
+    softSkills: SoftSkillItem[];
     languagesTitle: string;
     languages: LanguageEntry[];
 };
@@ -76,12 +88,17 @@ export type StudyItem = {
 };
 
 export type CertificationItem = {
+    // Cruza con el badge del emisor en Education.astro (los assets viven en el componente)
+    id: "chrome-enterprise" | "linux-intro" | "linux-customization";
     title: string;
     place: string;
-    duration: string;
-    year: string;
+    date: string;
     description: string;
     document: string | null;
+    verifyUrl: string | null;
+    // Solo se muestra cuando el verificador pide el código a mano (Hack4u). Si el enlace
+    // de verificación resuelve solo (Accredible), va a null y no se publica.
+    credentialId: string | null;
 };
 
 export type EducationTranslations = {
@@ -89,6 +106,8 @@ export type EducationTranslations = {
     formalTitle: string;
     certificationsTitle: string;
     viewCertificateLabel: string;
+    verifyLabel: string;
+    credentialIdLabel: string;
     studies: StudyItem[];
     certifications: CertificationItem[];
 };
@@ -108,6 +127,7 @@ type ContactTexts = {
 
 type FooterTexts = {
     footer: string;
+    builtWith: string;
     github: string;
     linkedin: string;
     email: string;
@@ -145,10 +165,10 @@ export const translations: Record<Lang, Translations> = {
             contact: "Contact",
         },
         hero: {
-            badge: "CYBERSECURITY · DEVOPS · RED TEAM",
+            badge: "CYBERSECURITY · SYSTEMS · AUTOMATION",
             greeting: "Hi, I'm",
             titleLine: "I build secure & reliable systems.",
-            subtitle: "+2 years of experience. <highlight>Cybersecurity & Systems Specialist</highlight> based in Burriana, Spain. Experienced in networks, systems administration and ethical hacking.",
+            subtitle: "3 years of experience. <highlight>Cybersecurity & Systems Specialist</highlight> based in Burriana, Spain. Experienced in networks, systems administration and ethical hacking.",
             github: "GitHub",
             linkedin: "LinkedIn",
             email: "Email",
@@ -156,6 +176,12 @@ export const translations: Record<Lang, Translations> = {
         experience: {
             title: "Work Experience",
             items: [
+                {
+                    role: "L1 Service Desk Technician",
+                    company: "Ciberia Tech",
+                    period: "Jan 2026 – Present",
+                    description: "Integration and continuous improvement of systems under Zero-Touch and Zero-Trust policies. Design of AI-powered automation workflows with Anthropic Claude and n8n to speed up the work of both end users and service desk technicians. Day-to-day operations on Atlassian Suite and Google Workspace.",
+                },
                 {
                     role: "Systems & Network Administrator",
                     company: "Ayuntamiento de Burriana",
@@ -165,13 +191,13 @@ export const translations: Record<Lang, Translations> = {
                 {
                     role: "Full-Stack Developer",
                     company: "Develovements",
-                    period: "Mar 2023 – Jul 2023",
+                    period: "Mar 2023 – Aug 2023",
                     description: "Full development of a complete web application (frontend in Next.js + backend in NestJS), and contribution of improvements and bug fixes to existing Python-based projects.",
                 },
                 {
                     role: "IT Support Technician",
                     company: "Grupo STN",
-                    period: "Mar 2021 – Jun 2021",
+                    period: "Mar 2021 – Jul 2021",
                     description: "User support (CAU), configuration of Aruba switches and collaboration on internal software development tasks.",
                 },
             ],
@@ -229,45 +255,35 @@ export const translations: Record<Lang, Translations> = {
                 "I’m a <highlight>cybersecurity & systems specialist</highlight> focused on securing infrastructures and reducing operational risk. I work with firewalls, networks and Active Directory to keep critical systems stable, resilient and protected.",
                 "I’ve supported corporate and public-sector environments, handling firewall administration, switch management, datacenter expansion and incident response — helping teams strengthen their security posture and operate more efficiently.",
                 "I’m driven by technical challenges: identifying weaknesses, hardening services and applying practical solutions that improve reliability and reduce attack surface.",
-                "Right now I’m deepening my expertise in <highlight>digital forensics</highlight>, <highlight>Red Team operations</highlight> and <highlight>DevOps security</highlight>, combining a hands-on mindset with continuous learning and a strong focus on problem-solving.",
+                "Right now I’m focused on <highlight>infrastructure security</highlight> and <highlight>automation</highlight>: hardening the systems I run, applying Zero-Trust principles and building workflows that take repetitive work away from technicians and users alike.",
             ],
         },
         skills: {
             title: "Skills & Tech Stack",
             sections: [
                 {
-                    key: "cyber",
-                    title: "Cybersecurity & Ethical Hacking",
-                    description: "Focused on securing infrastructures, reducing attack surface and practicing ethical hacking in lab environments.",
+                    key: "security",
+                    title: "Security & Hardening",
+                    description: "Hardening infrastructure, reducing attack surface and testing defences with offensive tooling in lab environments.",
                 },
                 {
                     key: "systems",
                     title: "Systems & Networks",
-                    description: "Windows / Linux infrastructure administration and secure network services.",
+                    description: "Windows and Linux infrastructure, Active Directory, virtualization and secure network services.",
                 },
                 {
-                    key: "forensics",
-                    title: "Digital Forensics & Analysis",
-                    description: "Investigation of incidents and evidence acquisition in lab scenarios.",
-                },
-                {
-                    key: "devops",
-                    title: "DevOps & Automation",
-                    description: "CI/CD pipelines, containerization and infrastructure monitoring for secure, repeatable deployments.",
-                },
-                {
-                    key: "web",
-                    title: "Web & Scripting",
-                    description: "Dashboards, utilities and small apps that support security workflows.",
+                    key: "automation",
+                    title: "Automation & DevOps",
+                    description: "Containers, configuration management and AI-assisted workflows that remove repetitive work.",
                 },
             ],
             softSkillsTitle: "Soft Skills",
             softSkills: [
-                "Leadership & mentoring in technical teams.",
-                "Clear, direct communication with stakeholders.",
-                "Teamwork under pressure and incident response.",
-                "Problem-solving mindset and ownership.",
-                "Self-taught, curious and proactive.",
+                { key: "mentoring", text: "Leadership & mentoring in technical teams." },
+                { key: "communication", text: "Clear, direct communication with stakeholders." },
+                { key: "incidents", text: "Teamwork under pressure and incident response." },
+                { key: "diagnosis", text: "Diagnosing production incidents: isolating the root cause before changing anything." },
+                { key: "selfTaught", text: "Self-taught, curious and proactive." },
             ],
             languagesTitle: "Languages",
             languages: [
@@ -281,6 +297,8 @@ export const translations: Record<Lang, Translations> = {
             formalTitle: "Formal Education",
             certificationsTitle: "Certifications",
             viewCertificateLabel: "View Certificate",
+            verifyLabel: "Verify",
+            credentialIdLabel: "Credential ID",
             studies: [
                 {
                     title: "Master's Degree in Cybersecurity",
@@ -303,12 +321,34 @@ export const translations: Record<Lang, Translations> = {
             ],
             certifications: [
                 {
-                    title: "Linux Customization Course",
+                    id: "chrome-enterprise",
+                    title: "Chrome Enterprise Premium Proficiency Badge",
+                    place: "Google",
+                    date: "Apr 2026",
+                    description: "Covers browser deployment, management and advanced security through hands-on modules in the Google Admin console: management fundamentals, context-aware access controls, data loss prevention (DLP), content filtering and identity synchronisation.",
+                    document: "/documents/google-chrome-enterprise-premium-proficiency-badge.pdf",
+                    verifyUrl: "https://chromeenterprisecertified.accredible.com/65b7b710-3199-430e-85ec-f1b530b74d1a#acc.PZGj9Hyg",
+                    credentialId: null,
+                },
+                {
+                    id: "linux-intro",
+                    title: "Introduction to Linux",
                     place: "Hack4u",
-                    duration: "3 hours",
-                    year: "2025",
+                    date: "Dec 2025",
+                    description: "Hack4u course on Linux fundamentals, completed with every assessment test passed.",
+                    document: "/documents/hack4u-linux-introduction-certificate.pdf",
+                    verifyUrl: "https://hack4u.io/check-certificate/",
+                    credentialId: "1184-5652-1771-1047",
+                },
+                {
+                    id: "linux-customization",
+                    title: "Linux Environment Customization",
+                    place: "Hack4u",
+                    date: "Oct 2025",
                     description: "Linux workstation customization and workflow optimization following S4vitar’s professional setup.",
-                    document: "/documents/linux-customization-certificate.pdf",
+                    document: "/documents/hack4u-linux-customization-certificate.pdf",
+                    verifyUrl: "https://hack4u.io/check-certificate/",
+                    credentialId: "7022-4692-3666-6154",
                 },
             ],
         },
@@ -326,6 +366,7 @@ export const translations: Record<Lang, Translations> = {
         },
         footer: {
             footer: "Alex Rosell. All rights reserved.",
+            builtWith: "Built with Astro & Svelte",
             github: "GitHub",
             linkedin: "LinkedIn",
             email: "Email",
@@ -343,10 +384,10 @@ export const translations: Record<Lang, Translations> = {
             contact: "Contacto",
         },
         hero: {
-            badge: "CIBERSEGURIDAD · DEVOPS · RED TEAM",
+            badge: "CIBERSEGURIDAD · SISTEMAS · AUTOMATIZACIÓN",
             greeting: "Hola, soy",
             titleLine: "Diseño sistemas seguros y fiables.",
-            subtitle: "+2 años de experiencia. <highlight>Especialista en Ciberseguridad y Sistemas</highlight> con base en Burriana, España. Experiencia en redes, administración de sistemas y hacking ético.",
+            subtitle: "3 años de experiencia. <highlight>Especialista en Ciberseguridad y Sistemas</highlight> con base en Burriana, España. Experiencia en redes, administración de sistemas y hacking ético.",
             github: "GitHub",
             linkedin: "LinkedIn",
             email: "Correo",
@@ -354,6 +395,12 @@ export const translations: Record<Lang, Translations> = {
         experience: {
             title: "Experiencia profesional",
                 items: [
+                    {
+                        role: "Técnico L1 CAU",
+                        company: "Ciberia Tech",
+                        period: "ene 2026 – actualidad",
+                        description: "Integración y mejora continua de sistemas bajo políticas Zero-Touch y Zero-Trust. Diseño de flujos de automatización con IA mediante Anthropic Claude y n8n para agilizar el trabajo de usuarios y técnicos del CAU. Operativa diaria sobre Atlassian Suite y Google Workspace.",
+                    },
                     {
                         role: "Administrador de sistemas y redes",
                         company: "Ayuntamiento de Burriana",
@@ -363,13 +410,13 @@ export const translations: Record<Lang, Translations> = {
                     {
                         role: "Desarrollador Full-Stack",
                         company: "Develovements",
-                        period: "mar 2023 – jul 2023",
+                        period: "mar 2023 – ago 2023",
                         description: "Desarrollo completo de una aplicación web (frontend en Next.js + backend en NestJS) y aportación de mejoras y corrección de errores en proyectos existentes basados en Python.",
                     },
                     {
                         role: "Técnico de soporte IT",
                         company: "Grupo STN",
-                        period: "mar 2021 – jun 2021",
+                        period: "mar 2021 – jul 2021",
                         description: "Soporte a usuarios (CAU), configuración de switches Aruba y colaboración en tareas de desarrollo de software interno.",
                     },
                 ],
@@ -427,45 +474,35 @@ export const translations: Record<Lang, Translations> = {
                 "Soy <highlight>especialista en ciberseguridad y sistemas</highlight>, centrado en securizar infraestructuras y reducir el riesgo operativo. Trabajo con cortafuegos, redes y Active Directory para mantener sistemas críticos estables, resilientes y protegidos.",
                 "He trabajado tanto en entornos corporativos como en la administración pública, gestionando firewalls, switches gestionados, ampliaciones de datacenter y respuesta a incidencias, ayudando a los equipos a reforzar su postura de seguridad y a operar de forma más eficiente.",
                 "Me motivan los retos técnicos: identificar debilidades, bastionar servicios y aplicar soluciones prácticas que mejoren la fiabilidad y reduzcan la superficie de ataque.",
-                "Actualmente estoy profundizando en <highlight>informática forense</highlight>, <highlight>operaciones de Red Team</highlight> y <highlight>seguridad en entornos DevOps</highlight>, combinando una mentalidad práctica con aprendizaje continuo y un fuerte foco en la resolución de problemas.",
+                "Ahora mismo estoy centrado en la <highlight>seguridad de la infraestructura</highlight> y en la <highlight>automatización</highlight>: fortificar los sistemas que administro, aplicar principios Zero-Trust y construir flujos que quiten trabajo repetitivo a técnicos y usuarios.",
             ],
         },
         skills: {
             title: "Habilidades y stack tecnológico",
             sections: [
                 {
-                    key: "cyber",
-                    title: "Ciberseguridad y hacking ético",
-                    description: "Enfoque en securizar infraestructuras, reducir la superficie de ataque y practicar hacking ético en entornos de laboratorio.",
+                    key: "security",
+                    title: "Seguridad y fortificación",
+                    description: "Fortificación de infraestructuras, reducción de la superficie de ataque y validación de defensas con herramientas ofensivas en laboratorio.",
                 },
                 {
                     key: "systems",
                     title: "Sistemas y redes",
-                    description: "Administración de infraestructuras Windows / Linux y servicios de red seguros.",
+                    description: "Infraestructura Windows y Linux, Active Directory, virtualización y servicios de red seguros.",
                 },
                 {
-                    key: "forensics",
-                    title: "Informática forense y análisis",
-                    description: "Investigación de incidentes y adquisición de evidencias en escenarios de laboratorio.",
-                },
-                {
-                    key: "devops",
-                    title: "DevOps y automatización",
-                    description: "Pipelines CI/CD, contenedores y monitorización de infraestructuras para despliegues seguros y repetibles.",
-                },
-                {
-                    key: "web",
-                    title: "Web y scripting",
-                    description: "Dashboards, utilidades y pequeñas aplicaciones que apoyan flujos de trabajo de seguridad.",
+                    key: "automation",
+                    title: "Automatización y DevOps",
+                    description: "Contenedores, gestión de configuración y flujos asistidos por IA que eliminan trabajo repetitivo.",
                 },
             ],
             softSkillsTitle: "Competencias personales",
             softSkills: [
-                "Liderazgo y mentoring en equipos técnicos.",
-                "Comunicación clara y directa con personas clave.",
-                "Trabajo en equipo bajo presión y respuesta a incidencias.",
-                "Mentalidad de resolución de problemas y sentido de responsabilidad.",
-                "Autodidacta, curioso y proactivo.",
+                { key: "mentoring", text: "Liderazgo y mentoring en equipos técnicos." },
+                { key: "communication", text: "Comunicación clara y directa con personas clave." },
+                { key: "incidents", text: "Trabajo en equipo bajo presión y respuesta a incidencias." },
+                { key: "diagnosis", text: "Diagnóstico de incidencias en producción: aislar la causa antes de tocar el sistema." },
+                { key: "selfTaught", text: "Autodidacta, curioso y proactivo." },
             ],
             languagesTitle: "Idiomas",
             languages: [
@@ -479,6 +516,8 @@ export const translations: Record<Lang, Translations> = {
             formalTitle: "Formación reglada",
             certificationsTitle: "Certificaciones",
             viewCertificateLabel: "Ver certificado",
+            verifyLabel: "Verificar",
+            credentialIdLabel: "ID de credencial",
             studies: [
                 {
                     title: "Máster en Ciberseguridad",
@@ -501,12 +540,34 @@ export const translations: Record<Lang, Translations> = {
             ],
             certifications: [
                 {
-                    title: "Curso de Personalización de Linux",
+                    id: "chrome-enterprise",
+                    title: "Chrome Enterprise Premium Proficiency Badge",
+                    place: "Google",
+                    date: "abr 2026",
+                    description: "Cubre la implementación, administración y seguridad avanzada del navegador mediante módulos prácticos en la consola de Google: fundamentos de gestión, controles de acceso por contexto, prevención de pérdida de datos (DLP), filtrado de contenido y sincronización de identidades.",
+                    document: "/documents/google-chrome-enterprise-premium-proficiency-badge.pdf",
+                    verifyUrl: "https://chromeenterprisecertified.accredible.com/65b7b710-3199-430e-85ec-f1b530b74d1a#acc.PZGj9Hyg",
+                    credentialId: null,
+                },
+                {
+                    id: "linux-intro",
+                    title: "Introducción a Linux",
                     place: "Hack4u",
-                    duration: "3 horas",
-                    year: "2025",
+                    date: "dic 2025",
+                    description: "Curso de fundamentos de Linux de Hack4u, superando las pruebas de evaluación.",
+                    document: "/documents/hack4u-linux-introduction-certificate.pdf",
+                    verifyUrl: "https://hack4u.io/check-certificate/",
+                    credentialId: "1184-5652-1771-1047",
+                },
+                {
+                    id: "linux-customization",
+                    title: "Personalización de entorno en Linux",
+                    place: "Hack4u",
+                    date: "oct 2025",
                     description: "Personalización de estación de trabajo Linux y optimización del flujo de trabajo siguiendo la configuración profesional de S4vitar.",
-                    document: "/documents/linux-customization-certificate.pdf",
+                    document: "/documents/hack4u-linux-customization-certificate.pdf",
+                    verifyUrl: "https://hack4u.io/check-certificate/",
+                    credentialId: "7022-4692-3666-6154",
                 },
             ],
         },
@@ -524,6 +585,7 @@ export const translations: Record<Lang, Translations> = {
         },
         footer: {
             footer: "Alex Rosell. Todos los derechos reservados.",
+            builtWith: "Hecho con Astro y Svelte",
             github: "GitHub",
             linkedin: "LinkedIn",
             email: "Correo",

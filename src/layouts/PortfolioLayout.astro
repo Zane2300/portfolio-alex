@@ -11,6 +11,23 @@ const {
 <!DOCTYPE html>
 <html lang={lang} class="dark">
     <head>
+        <!-- ANTI-FOUC: aplica el tema antes del primer pintado. Debe ir lo primero del head
+             y en línea; es la única excepción a "nada de JS suelto en el layout". -->
+        <script is:inline>
+            (function () {
+                try {
+                    var stored = localStorage.getItem("theme");
+                    var dark =
+                        stored === "dark" ||
+                        (stored !== "light" &&
+                            window.matchMedia("(prefers-color-scheme: dark)").matches);
+                    document.documentElement.classList.toggle("dark", dark);
+                } catch (e) {
+                    /* modo privado o storage bloqueado: se queda el oscuro del servidor */
+                }
+            })();
+        </script>
+
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="generator" content={Astro.generator} />

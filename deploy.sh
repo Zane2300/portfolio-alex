@@ -1,21 +1,16 @@
 #!/bin/bash
+set -e
 
-set -e  # stop if error
-
-# Auto-fix CRLF if someone edited this file in Windows
-dos2unix "$0" 2>/dev/null
-
-echo "📦 Installing Node Modules..."
+echo "Installing Node Modules..."
 npm install
 
-echo "📦 Building Astro project..."
+echo "Building Astro project..."
 npm run build
 
-echo "🛑 Adding .nojekyll to prevent GitHub Pages processing..."
+echo "Adding .nojekyll..."
 touch docs/.nojekyll
 
-echo "✅ Deployment folder prepared."
-echo "👉 Now commit and push:"
-echo "    git add ."
-echo "    git commit -m \"Deploy\""
-echo "    git push"
+echo "Done. Now commit and push:"
+echo "  git add ."
+echo "  git commit -m \"Deploy\""
+echo "  git push"

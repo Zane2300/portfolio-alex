@@ -21,6 +21,10 @@
     --color-blue: #61afef;
     --color-purple: #c678dd;
 
+    /* Fondo fijo (mismo en claro y oscuro) para los logos monocromos oscuros
+       que serían ilegibles sobre bg-bg-dark: VMware, Bash/Shell. */
+    --color-logo-chip: #e8eaed;
+
     /* Your brand red mapped to One Dark red */
     --color-primary: var(--color-red);
     --color-primary-light: #ff7f88;
@@ -41,4 +45,10 @@
     --color-primary: #e11d48; /* rojo bonito para modo claro */
     --color-primary-light: #fb7185;
     --color-primary-dark: #be123c;
+
+    /* Acentos One Dark oscurecidos: los pasteles del tema oscuro se caen por debajo
+       de 4.5:1 sobre el fondo claro. Estos superan ese umbral sobre --color-bg. */
+    --color-red: #c62f3b;
+    --color-yellow: #8a6209;
+    --color-green: #3f7d2c;
 }

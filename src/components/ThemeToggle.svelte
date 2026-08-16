@@ -13,7 +13,12 @@
             root.classList.remove("dark");
         }
 
-        localStorage.setItem("theme", next);
+        try {
+            localStorage.setItem("theme", next);
+        } catch (e) {
+            /* modo privado o storage bloqueado: el tema se aplica igual, no persiste */
+        }
+
         theme = next;
     }
 
@@ -23,14 +28,9 @@
     }
 
     onMount(() => {
-        const stored = localStorage.getItem("theme") as Theme | null;
-
-        if (stored === "light" || stored === "dark") {
-            applyTheme(stored);
-        } else {
-            const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-            applyTheme(prefersDark ? "dark" : "light");
-        }
+        // El tema ya lo ha aplicado el script anti-FOUC del layout; aquí solo se lee
+        // el estado real del DOM para que el botón arranque con la etiqueta correcta.
+        theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
     });
 </script>
 
@@ -42,7 +42,7 @@
     <span 
         class="inline-block h-2 w-2 rounded-full"
         class:bg-primary={theme === "dark"}
-        class:bg-yellow-300={theme === "light"}
+        class:bg-yellow={theme === "light"}
     >
     </span>
     <span>{theme === "dark" ? "Dark" : "Light"}</span>
